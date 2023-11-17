@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PodcastIndexAPIKey</key>
+	<string>$(PODCAST_INDEX_API_KEY)</string>
+	<key>PodcastIndexAPISecret</key>
+	<string>$(PODCAST_INDEX_API_SECRET)</string>
+	<key>PodcastIndexUserAgent</key>
+	<string>$(PODCAST_INDEX_USER_AGENT)</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

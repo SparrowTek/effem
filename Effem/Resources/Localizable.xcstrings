@@ -1,0 +1,69 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " " : {
+
+    },
+    "%lld" : {
+
+    },
+    "all" : {
+
+    },
+    "DOWNLOADS" : {
+
+    },
+    "Effem is powered by Podcasting 2.0 and the [Podcast Index](https://podcastindex.org)" : {
+
+    },
+    "EPISODE 1" : {
+
+    },
+    "EPISODE 2" : {
+
+    },
+    "index" : {
+
+    },
+    "library" : {
+
+    },
+    "new podcast" : {
+
+    },
+    "person" : {
+
+    },
+    "Search" : {
+
+    },
+    "SETTINGS" : {
+
+    },
+    "shows, episidoes, and more" : {
+
+    },
+    "social" : {
+
+    },
+    "SOCIAL" : {
+
+    },
+    "subscribe" : {
+
+    },
+    "term" : {
+
+    },
+    "title" : {
+
+    },
+    "Total Podcasts in the Index..." : {
+
+    }
+  },
+  "version" : "1.0"
+}

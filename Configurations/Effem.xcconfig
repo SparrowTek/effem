@@ -1,0 +1,10 @@
+//
+//  Effem.xcconfig
+//  Effem
+//
+//  Created by Thomas Rademaker on 11/15/23.
+//
+
+#include "User.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = $(BUNDLE_ID_PREFIX).effem

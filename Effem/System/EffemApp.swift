@@ -12,6 +12,7 @@ import PodcastIndexKit
 struct EffemApp: App {
     @State private var podcastIndex = PodcastIndexKit()
     @State private var state = AppState()
+    @State private var mediaPlaybackManager = MediaPlaybackManager.shared
     
     init() {
         setupPodcastIndexKit()
@@ -22,7 +23,7 @@ struct EffemApp: App {
             AppPresenter()
                 .environment(state)
                 .environment(podcastIndex)
-                .environment(MediaPlaybackManager.shared)
+                .environment(mediaPlaybackManager)
                 .setupModel()
         }
     }

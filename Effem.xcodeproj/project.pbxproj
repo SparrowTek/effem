@@ -41,6 +41,8 @@
 		6CB84B422AFFA88700E17E78 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B412AFFA88700E17E78 /* View.swift */; };
 		6CB84B442B0002FD00E17E78 /* PodcastIndexInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B432B0002FD00E17E78 /* PodcastIndexInfoView.swift */; };
 		6CB84B462B0011DC00E17E78 /* UnsubscribedPodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B452B0011DC00E17E78 /* UnsubscribedPodcastView.swift */; };
+		6CBAE52A2B0818C600490857 /* podcastresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CF479CD2AF424220037D2A4 /* podcastresponse.json */; };
+		6CBAE52B2B0818C900490857 /* episodeArrayResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CF479CF2AF424B70037D2A4 /* episodeArrayResponse.json */; };
 		6CE2A39B2AF2E062003C82C3 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2A39A2AF2E062003C82C3 /* PlaybackSlider.swift */; };
 		6CE2A3A02AF2FB8D003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */; };
 		6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */; };
@@ -342,6 +344,8 @@
 			files = (
 				6C726B162A17FB9900C76C48 /* Colors.xcassets in Resources */,
 				6C15D2532A095222001CBAAD /* Preview Assets.xcassets in Resources */,
+				6CBAE52B2B0818C900490857 /* episodeArrayResponse.json in Resources */,
+				6CBAE52A2B0818C600490857 /* podcastresponse.json in Resources */,
 				6C3116692AD74D670066FED9 /* Localizable.xcstrings in Resources */,
 				6C15D2502A095222001CBAAD /* Assets.xcassets in Resources */,
 			);

@@ -21,15 +21,11 @@ public let previewContainer: ModelContainer = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        print("YO 1")
-        
         if let podcastFile = Bundle.main.url(forResource: "podcastresponse", withExtension: "json") {
-            print("YO 2")
             let data = try Data(contentsOf: podcastFile)
             let podcastResponse = try decoder.decode(PodcastResponse.self, from: data)
             
             if let podcast = podcastResponse.feed {
-                print("podcast saved")
                 container.mainContext.insert(FMPodcast(podcast: podcast))
             }
         }

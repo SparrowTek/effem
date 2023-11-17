@@ -6,28 +6,48 @@
 //
 
 import SwiftUI
+import SwiftData
 import PodcastIndexKit
 
 struct UnsubscribedPodcastView: View {
     @Environment(\.modelContext) private var modelContext
+    @State private var subscribeInProgress = false
+    @State private var subscribeTrigger = PlainTaskTrigger()
+    @Query private var podcasts: [FMPodcast]
+    
     let podcast: Podcast
+    
+    private var isSubscribed: Bool {
+        guard let podcastsMatchingFilter = try? podcasts.filter(#Predicate { $0.podcastGuid == podcast.podcastGuid }) else { return false }
+        return podcastsMatchingFilter.count > 0
+    }
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .bottom) {
                 CommonImage(image: .url(url: podcast.artwork, sfSymbol: "photo"))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .scaledToFit()
-                    .frame(width: 150)
-                    .frame(height: 150)
-            
+                    .frame(width: 100)
+                    .frame(height: 100)
+                
                 VStack(alignment: .leading) {
                     Text(podcast.title ?? "")
                         .font(.title2)
                         .multilineTextAlignment(.leading)
                     
-                    Button("subscribe", action: subscribe)
-                        .buttonStyle(.borderedProminent)
+                    Button(action: triggerSubscibe) {
+                        Group {
+                            if subscribeInProgress {
+                                ProgressView()
+                            } else {
+                                Text(isSubscribed ? "unsubscribe" : "subscribe")
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(subscribeInProgress)
                 }
                 
                 Spacer()
@@ -36,8 +56,6 @@ struct UnsubscribedPodcastView: View {
             
             Text(podcast.podcastDescription ?? "")
                 .padding(.horizontal)
-            
-            
             
             List {
                 Text("EPISODE 1")
@@ -48,16 +66,33 @@ struct UnsubscribedPodcastView: View {
         .navigationTitle("new podcast")
         .navigationBarTitleDisplayMode(.inline)
         .commonView()
+        .task($subscribeTrigger) { await subscribe() }
     }
     
-    private func subscribe() {
-        let fmPodcast = FMPodcast(podcast: podcast)
-        modelContext.insert(fmPodcast)
+    private func triggerSubscibe() {
+        subscribeTrigger.trigger()
+    }
+    
+    private func subscribe() async {
+        subscribeInProgress = true
+        
+        if isSubscribed {
+            if let subscribedPodcast = try? podcasts.filter(#Predicate { $0.podcastGuid == podcast.podcastGuid }).first {
+                modelContext.delete(subscribedPodcast)
+            }
+        } else {
+            let fmPodcast = FMPodcast(podcast: podcast)
+            modelContext.insert(fmPodcast)
+        }
+        
+        try? await Task.sleep(nanoseconds: 500_000_000)
+        subscribeInProgress = false
     }
 }
 
-//#Preview {
-//    NavigationStack {
-//        UnsubscribedPodcastView(artwork: "https://noagendaassets.com/enc/1698943491.532_na-1604-lit.png", title: "No Agenda", description: "The no agenda show by John C Devorak and Adam Curry. Something blah blah blah")
-//    }
-//}
+#Preview {
+    NavigationStack {
+        UnsubscribedPodcastView(podcast: Podcast.preview)
+            .modelContainer(previewContainer)
+    }
+}

@@ -19,16 +19,22 @@ struct SettingsPresenter: View {
                     switch $0 {
                     case .privacy:
                         Text("Privacy policy")
+                            .interactiveDismissDisabled()
                     case .about:
                         Text("About")
+                            .interactiveDismissDisabled()
                     case .podcasterInfo:
                         Text("Podcaster Info")
+                            .interactiveDismissDisabled()
                     case .podcastIndexInfo:
                         Text("Podcast Index Info")
+                            .interactiveDismissDisabled()
                     case .storage:
                         Text("Storage")
+                            .interactiveDismissDisabled()
                     case .theme:
                         Text("Theme")
+                            .interactiveDismissDisabled()
                     }
                 }
         }
@@ -37,6 +43,7 @@ struct SettingsPresenter: View {
 }
 
 struct SettingsView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var icloudSync = false
     @State private var allowDownloading = false
     @State private var allowStreaming = false
@@ -83,6 +90,11 @@ struct SettingsView: View {
         }
         .tint(.accent)
         .navigationTitle("settings")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Done", action: { dismiss() })
+            }
+        }
     }
 }
 
@@ -91,6 +103,5 @@ struct SettingsView: View {
         .sheet(isPresented: .constant(true)) {
             SettingsPresenter()
                 .environment(SettingsState(parentState: .init()))
-                .presentationDragIndicator(.visible)
         }
 }

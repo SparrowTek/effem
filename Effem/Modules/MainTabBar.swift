@@ -45,7 +45,6 @@ struct MainTabBar: View {
             case .settings:
                 SettingsPresenter()
                     .environment(state.settingsState)
-                    .presentationDragIndicator(.visible)
             case .downloads:
                 Text("DOWNLOADS")
                     .presentationDragIndicator(.visible)

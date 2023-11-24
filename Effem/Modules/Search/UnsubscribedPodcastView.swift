@@ -35,6 +35,7 @@ struct UnsubscribedPodcastView: View {
                     Text(podcast.title ?? "")
                         .font(.title2)
                         .multilineTextAlignment(.leading)
+                        .foregroundStyle(.accent)
                     
                     Button(action: triggerSubscibe) {
                         Group {
@@ -42,6 +43,7 @@ struct UnsubscribedPodcastView: View {
                                 ProgressView()
                             } else {
                                 Text(isSubscribed ? "unsubscribe" : "subscribe")
+                                    .foregroundStyle(.primaryWhite)
                             }
                         }
                         .frame(maxWidth: .infinity)
@@ -55,6 +57,7 @@ struct UnsubscribedPodcastView: View {
             .padding()
             
             Text(podcast.podcastDescription ?? "")
+                .foregroundStyle(.accent)
                 .padding(.horizontal)
             
             List {

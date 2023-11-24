@@ -38,6 +38,8 @@
 		6C726B342A18103100C76C48 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B332A18103100C76C48 /* SocialView.swift */; };
 		6C726B372A18154300C76C48 /* PlaybackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B362A18154300C76C48 /* PlaybackBar.swift */; };
 		6C726B392A181B7F00C76C48 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B382A181B7F00C76C48 /* NavBar.swift */; };
+		6C8EF8D62B1117A500F2C6A7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */; };
+		6C8EF8D92B11187900F2C6A7 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D82B11187900F2C6A7 /* SettingsState.swift */; };
 		6CB84B422AFFA88700E17E78 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B412AFFA88700E17E78 /* View.swift */; };
 		6CB84B442B0002FD00E17E78 /* PodcastIndexInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B432B0002FD00E17E78 /* PodcastIndexInfoView.swift */; };
 		6CB84B462B0011DC00E17E78 /* UnsubscribedPodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB84B452B0011DC00E17E78 /* UnsubscribedPodcastView.swift */; };
@@ -81,6 +83,8 @@
 		6C726B332A18103100C76C48 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		6C726B362A18154300C76C48 /* PlaybackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackBar.swift; sourceTree = "<group>"; };
 		6C726B382A181B7F00C76C48 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		6C8EF8D82B11187900F2C6A7 /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		6CB84B412AFFA88700E17E78 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		6CB84B432B0002FD00E17E78 /* PodcastIndexInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastIndexInfoView.swift; sourceTree = "<group>"; };
 		6CB84B452B0011DC00E17E78 /* UnsubscribedPodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsubscribedPodcastView.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				6C726B242A1808C000C76C48 /* MainTabBar.swift */,
 				6C726B352A18152600C76C48 /* Common */,
 				6C726B272A1809F900C76C48 /* Library */,
+				6C8EF8D72B11185E00F2C6A7 /* Settings */,
 				6C726B262A1809F200C76C48 /* Search */,
 				6C726B302A180FF800C76C48 /* Social */,
 			);
@@ -270,6 +275,15 @@
 				6CF479D12AF438390037D2A4 /* CommonImage.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		6C8EF8D72B11185E00F2C6A7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */,
+				6C8EF8D82B11187900F2C6A7 /* SettingsState.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +379,7 @@
 				6C726B2F2A180C9000C76C48 /* IndexState.swift in Sources */,
 				6C726B372A18154300C76C48 /* PlaybackBar.swift in Sources */,
 				6CB84B462B0011DC00E17E78 /* UnsubscribedPodcastView.swift in Sources */,
+				6C8EF8D92B11187900F2C6A7 /* SettingsState.swift in Sources */,
 				6C0AD7212AF34EB70020350C /* FMEpisode.swift in Sources */,
 				6C726B392A181B7F00C76C48 /* NavBar.swift in Sources */,
 				6C726B2B2A180C0500C76C48 /* IndexView.swift in Sources */,
@@ -387,6 +402,7 @@
 				6C2D75452A1D56CF003F2C5B /* NowPlayingView.swift in Sources */,
 				6C726B342A18103100C76C48 /* SocialView.swift in Sources */,
 				6C31166B2AD872FD0066FED9 /* CommonView.swift in Sources */,
+				6C8EF8D62B1117A500F2C6A7 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

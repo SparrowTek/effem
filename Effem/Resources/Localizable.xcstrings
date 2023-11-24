@@ -10,6 +10,12 @@
     "%lld" : {
 
     },
+    "about" : {
+
+    },
+    "About" : {
+
+    },
     "all" : {
 
     },
@@ -17,6 +23,9 @@
 
     },
     "Effem is powered by Podcasting 2.0 and the [Podcast Index](https://podcastindex.org)" : {
+
+    },
+    "effem settings" : {
 
     },
     "EPISODE 1" : {
@@ -37,10 +46,19 @@
     "person" : {
 
     },
-    "Search" : {
+    "Podcast Index Info" : {
 
     },
-    "SETTINGS" : {
+    "Podcaster Info" : {
+
+    },
+    "privacy" : {
+
+    },
+    "Privacy policy" : {
+
+    },
+    "Search" : {
 
     },
     "shows, episidoes, and more" : {
@@ -62,6 +80,9 @@
 
     },
     "Total Podcasts in the Index..." : {
+
+    },
+    "unsubscribe" : {
 
     }
   },

@@ -43,7 +43,8 @@ struct MainTabBar: View {
             case .nowPlaying:
                 NowPlayingView()
             case .settings:
-                Text("SETTINGS")
+                SettingsPresenter()
+                    .environment(state.settingsState)
                     .presentationDragIndicator(.visible)
             case .downloads:
                 Text("DOWNLOADS")

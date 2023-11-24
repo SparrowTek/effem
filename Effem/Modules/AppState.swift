@@ -44,6 +44,8 @@ public class AppState {
     lazy var libraryState = LibraryState(parentState: self)
     @ObservationIgnored
     lazy var socialState = SocialState(parentState: self)
+    @ObservationIgnored
+    lazy var settingsState = SettingsState(parentState: self)
     
     func openSettings() {
         sheet = .settings

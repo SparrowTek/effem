@@ -88,7 +88,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .tint(.accent)
+        .commonView()
         .navigationTitle("settings")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

@@ -25,6 +25,7 @@ struct EffemApp: App {
                 .environment(podcastIndex)
                 .environment(mediaPlaybackManager)
                 .setupModel()
+                .setTheme()
         }
     }
     

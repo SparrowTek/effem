@@ -22,7 +22,6 @@ extension View {
     }
 }
 
-
 #Preview {
     Text("Common view")
         .commonView()

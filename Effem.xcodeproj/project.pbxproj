@@ -51,6 +51,7 @@
 		6CE2A39B2AF2E062003C82C3 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2A39A2AF2E062003C82C3 /* PlaybackSlider.swift */; };
 		6CE2A3A02AF2FB8D003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */; };
 		6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */; };
+		6CEA77322B15AAE3009E3EA7 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */; };
 		6CF479CC2AF41EEE0037D2A4 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF479CB2AF41EEE0037D2A4 /* PreviewContainer.swift */; };
 		6CF479D22AF438390037D2A4 /* CommonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF479D12AF438390037D2A4 /* CommonImage.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,7 @@
 				6C4171372AD74B1A005DE89E /* NukeVideo in Frameworks */,
 				6C4171332AD74B1A005DE89E /* NukeExtensions in Frameworks */,
 				6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */,
+				6CEA77322B15AAE3009E3EA7 /* PodcastIndexKit in Frameworks */,
 				6C4171352AD74B1A005DE89E /* NukeUI in Frameworks */,
 				6CE2A3A02AF2FB8D003C82C3 /* PodcastIndexKit in Frameworks */,
 			);
@@ -318,6 +320,7 @@
 				6C4171362AD74B1A005DE89E /* NukeVideo */,
 				6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */,
 				6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */,
+				6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */,
 			);
 			productName = Index;
 			productReference = 6C15D2482A095221001CBAAD /* Effem.app */;
@@ -349,7 +352,7 @@
 			mainGroup = 6C15D23F2A095221001CBAAD;
 			packageReferences = (
 				6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */,
-				6CE2A3A12AF33366003C82C3 /* XCLocalSwiftPackageReference "../Frameworks/PodcastIndexKit" */,
+				6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */,
 			);
 			productRefGroup = 6C15D2492A095221001CBAAD /* Products */;
 			projectDirPath = "";
@@ -624,13 +627,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		6CE2A3A12AF33366003C82C3 /* XCLocalSwiftPackageReference "../Frameworks/PodcastIndexKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Frameworks/PodcastIndexKit;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -638,6 +634,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.1.6;
+			};
+		};
+		6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SparrowTek/PodcastIndexKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -669,6 +673,11 @@
 		};
 		6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = PodcastIndexKit;
+		};
+		6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */;
 			productName = PodcastIndexKit;
 		};
 /* End XCSwiftPackageProductDependency section */

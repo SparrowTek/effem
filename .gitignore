@@ -4,6 +4,5 @@
 #### Xcode
 xcuserdata/
 *.xcworkspace
-*xcshareddata/
 
 User.xcconfig

@@ -93,9 +93,11 @@ struct UnsubscribedPodcastView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack {
         UnsubscribedPodcastView(podcast: Podcast.preview)
             .modelContainer(previewContainer)
     }
 }
+#endif

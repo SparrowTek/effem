@@ -89,6 +89,8 @@ fileprivate struct LibraryPodcastCell: View {
             .environment(AppState())
             .environment(LibraryState(parentState: .init()))
             .environment(MediaPlaybackManager.shared)
+            #if DEBUG
             .modelContainer(previewContainer)
+            #endif
     }
 }

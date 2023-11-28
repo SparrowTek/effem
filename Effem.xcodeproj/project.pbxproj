@@ -20,10 +20,6 @@
 		6C2F87982AFEE4AE004AE56A /* TaskTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2F87972AFEE4AE004AE56A /* TaskTrigger.swift */; };
 		6C3116692AD74D670066FED9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6C3116682AD74D670066FED9 /* Localizable.xcstrings */; };
 		6C31166B2AD872FD0066FED9 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C31166A2AD872FD0066FED9 /* CommonView.swift */; };
-		6C4171312AD74B1A005DE89E /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6C4171302AD74B1A005DE89E /* Nuke */; };
-		6C4171332AD74B1A005DE89E /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 6C4171322AD74B1A005DE89E /* NukeExtensions */; };
-		6C4171352AD74B1A005DE89E /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6C4171342AD74B1A005DE89E /* NukeUI */; };
-		6C4171372AD74B1A005DE89E /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 6C4171362AD74B1A005DE89E /* NukeVideo */; };
 		6C70155E2B03A68D003D6160 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C70155D2B03A68D003D6160 /* Podcast.swift */; };
 		6C726B122A17F87400C76C48 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B112A17F87400C76C48 /* AppState.swift */; };
 		6C726B142A17F8A000C76C48 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B132A17F8A000C76C48 /* AppPresenter.swift */; };
@@ -38,6 +34,11 @@
 		6C726B342A18103100C76C48 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B332A18103100C76C48 /* SocialView.swift */; };
 		6C726B372A18154300C76C48 /* PlaybackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B362A18154300C76C48 /* PlaybackBar.swift */; };
 		6C726B392A181B7F00C76C48 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B382A181B7F00C76C48 /* NavBar.swift */; };
+		6C8B24232B163D38005E3BE3 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24222B163D38005E3BE3 /* Nuke */; };
+		6C8B24252B163D38005E3BE3 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24242B163D38005E3BE3 /* NukeExtensions */; };
+		6C8B24272B163D38005E3BE3 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24262B163D38005E3BE3 /* NukeUI */; };
+		6C8B24292B163D38005E3BE3 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24282B163D38005E3BE3 /* NukeVideo */; };
+		6C8B242C2B163D42005E3BE3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B242B2B163D42005E3BE3 /* PodcastIndexKit */; };
 		6C8EF8D62B1117A500F2C6A7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */; };
 		6C8EF8D92B11187900F2C6A7 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D82B11187900F2C6A7 /* SettingsState.swift */; };
 		6C8EF8DB2B11352F00F2C6A7 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8DA2B11352F00F2C6A7 /* Build.swift */; };
@@ -51,7 +52,6 @@
 		6CE2A39B2AF2E062003C82C3 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE2A39A2AF2E062003C82C3 /* PlaybackSlider.swift */; };
 		6CE2A3A02AF2FB8D003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */; };
 		6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */; };
-		6CEA77322B15AAE3009E3EA7 /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */; };
 		6CF479CC2AF41EEE0037D2A4 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF479CB2AF41EEE0037D2A4 /* PreviewContainer.swift */; };
 		6CF479D22AF438390037D2A4 /* CommonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF479D12AF438390037D2A4 /* CommonImage.swift */; };
 /* End PBXBuildFile section */
@@ -107,12 +107,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C4171312AD74B1A005DE89E /* Nuke in Frameworks */,
-				6C4171372AD74B1A005DE89E /* NukeVideo in Frameworks */,
-				6C4171332AD74B1A005DE89E /* NukeExtensions in Frameworks */,
+				6C8B24272B163D38005E3BE3 /* NukeUI in Frameworks */,
+				6C8B24292B163D38005E3BE3 /* NukeVideo in Frameworks */,
+				6C8B24232B163D38005E3BE3 /* Nuke in Frameworks */,
+				6C8B24252B163D38005E3BE3 /* NukeExtensions in Frameworks */,
+				6C8B242C2B163D42005E3BE3 /* PodcastIndexKit in Frameworks */,
 				6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */,
-				6CEA77322B15AAE3009E3EA7 /* PodcastIndexKit in Frameworks */,
-				6C4171352AD74B1A005DE89E /* NukeUI in Frameworks */,
 				6CE2A3A02AF2FB8D003C82C3 /* PodcastIndexKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,13 +315,13 @@
 			);
 			name = Effem;
 			packageProductDependencies = (
-				6C4171302AD74B1A005DE89E /* Nuke */,
-				6C4171322AD74B1A005DE89E /* NukeExtensions */,
-				6C4171342AD74B1A005DE89E /* NukeUI */,
-				6C4171362AD74B1A005DE89E /* NukeVideo */,
 				6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */,
 				6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */,
-				6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */,
+				6C8B24222B163D38005E3BE3 /* Nuke */,
+				6C8B24242B163D38005E3BE3 /* NukeExtensions */,
+				6C8B24262B163D38005E3BE3 /* NukeUI */,
+				6C8B24282B163D38005E3BE3 /* NukeVideo */,
+				6C8B242B2B163D42005E3BE3 /* PodcastIndexKit */,
 			);
 			productName = Index;
 			productReference = 6C15D2482A095221001CBAAD /* Effem.app */;
@@ -352,8 +352,8 @@
 			);
 			mainGroup = 6C15D23F2A095221001CBAAD;
 			packageReferences = (
-				6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */,
-				6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */,
+				6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */,
+				6C8B242A2B163D42005E3BE3 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */,
 			);
 			productRefGroup = 6C15D2492A095221001CBAAD /* Products */;
 			projectDirPath = "";
@@ -383,6 +383,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		6C8B24142B1636BB005E3BE3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -649,15 +650,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.1.6;
+				minimumVersion = 12.2.0;
 			};
 		};
-		6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */ = {
+		6C8B242A2B163D42005E3BE3 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SparrowTek/PodcastIndexKit";
 			requirement = {
@@ -668,25 +669,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6C4171302AD74B1A005DE89E /* Nuke */ = {
+		6C8B24222B163D38005E3BE3 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
-		6C4171322AD74B1A005DE89E /* NukeExtensions */ = {
+		6C8B24242B163D38005E3BE3 /* NukeExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeExtensions;
 		};
-		6C4171342AD74B1A005DE89E /* NukeUI */ = {
+		6C8B24262B163D38005E3BE3 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeUI;
 		};
-		6C4171362AD74B1A005DE89E /* NukeVideo */ = {
+		6C8B24282B163D38005E3BE3 /* NukeVideo */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6C41712F2AD74B1A005DE89E /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 6C8B24212B163D38005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = NukeVideo;
+		};
+		6C8B242B2B163D42005E3BE3 /* PodcastIndexKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C8B242A2B163D42005E3BE3 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */;
+			productName = PodcastIndexKit;
 		};
 		6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -694,11 +700,6 @@
 		};
 		6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = PodcastIndexKit;
-		};
-		6CEA77312B15AAE3009E3EA7 /* PodcastIndexKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6CEA77302B15AAE3009E3EA7 /* XCRemoteSwiftPackageReference "PodcastIndexKit" */;
 			productName = PodcastIndexKit;
 		};
 /* End XCSwiftPackageProductDependency section */

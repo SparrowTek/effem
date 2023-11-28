@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke.git",
+      "state" : {
+        "revision" : "1694798e876113d44f6ec6ead965d7286695981d",
+        "version" : "12.2.0"
+      }
+    },
+    {
+      "identity" : "podcastindexkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SparrowTek/PodcastIndexKit",
+      "state" : {
+        "revision" : "23c5d78db7911a993fc845c9feacc0d1cde6b05b",
+        "version" : "0.4.1"
+      }
+    }
+  ],
+  "version" : 2
+}

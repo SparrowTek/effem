@@ -28,6 +28,12 @@
     "cellular network" : {
 
     },
+    "color scheme" : {
+
+    },
+    "dark" : {
+
+    },
     "Done" : {
 
     },
@@ -58,6 +64,9 @@
     "library" : {
 
     },
+    "light" : {
+
+    },
     "new podcast" : {
 
     },
@@ -82,6 +91,9 @@
     "Search" : {
 
     },
+    "Selected Color Scheme" : {
+
+    },
     "settings" : {
 
     },
@@ -103,13 +115,13 @@
     "subscribe" : {
 
     },
+    "system" : {
+
+    },
     "term" : {
 
     },
     "theme" : {
-
-    },
-    "Theme" : {
 
     },
     "title" : {

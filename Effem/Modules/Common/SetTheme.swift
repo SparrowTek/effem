@@ -8,27 +8,29 @@
 import SwiftUI
 
 fileprivate struct SetThemeViewModifier: ViewModifier {
-    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String = "[0.12941176,0.12941176,0.12941176,1]"
-    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String = "[0.9647059,0.97647065,0.97647065,1]"
+    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
+    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
     @AppStorage(Build.Constants.UserDefault.colorScheme) private var colorSchemeString: String?
     @Environment(\.colorScheme) private var colorScheme
     
     private var setColorScheme: ColorScheme? {
         switch colorSchemeString {
-        case "light": .light
-        case "dark": .dark
+        case Build.Constants.Theme.light: .light
+        case Build.Constants.Theme.dark: .dark
         default: nil
         }
     }
     
     private var lightColor: Color {
-        guard let colorData = lightThemeColor.data(using: .utf8),
+        guard let lightThemeColor,
+              let colorData = lightThemeColor.data(using: .utf8),
               let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accentColor }
         return Color(colorResolved)
     }
     
     private var darkColor: Color {
-        guard let colorData = darkThemeColor.data(using: .utf8),
+        guard let darkThemeColor,
+              let colorData = darkThemeColor.data(using: .utf8),
               let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accentColor }
         return Color(colorResolved)
     }
@@ -36,7 +38,7 @@ fileprivate struct SetThemeViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .tint(colorScheme == .light ? lightColor : darkColor)
-            .preferredColorScheme(colorScheme)
+            .preferredColorScheme(setColorScheme)
     }
 }
 

@@ -14,5 +14,10 @@ struct Build {
             static let lightThemeColor = "com.sparrowtek.effem.userDefaults.lightThemeColor"
             static let darkThemeColor = "com.sparrowtek.effem.userDefaults.darkThemeColor"
         }
+        
+        struct Theme {
+            static let light = "com.sparrowtek.effem.theme.light"
+            static let dark = "com.sparrowtek.effem.theme.dark"
+        }
     }
 }

@@ -38,13 +38,16 @@ struct MainTabBar: View {
         }
         .onChange(of: state.tab) { triggerSensoryFeedback.toggle() }
         .sensoryFeedback(.selection, trigger: triggerSensoryFeedback)
+        .setTheme()
         .sheet(item: $state.sheet) {
             switch $0 {
             case .nowPlaying:
                 NowPlayingView()
+                    .setTheme()
             case .settings:
                 SettingsPresenter()
                     .environment(state.settingsState)
+                    .setTheme()
             case .downloads:
                 Text("DOWNLOADS")
                     .presentationDragIndicator(.visible)

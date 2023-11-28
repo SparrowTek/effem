@@ -33,7 +33,7 @@ struct SettingsPresenter: View {
                         Text("Storage")
                             .interactiveDismissDisabled()
                     case .theme:
-                        Text("Theme")
+                        ThemeSettingsView()
                             .interactiveDismissDisabled()
                     }
                 }

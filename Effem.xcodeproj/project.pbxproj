@@ -307,6 +307,7 @@
 				6C15D2442A095221001CBAAD /* Sources */,
 				6C15D2452A095221001CBAAD /* Frameworks */,
 				6C15D2462A095221001CBAAD /* Resources */,
+				6C8B24142B1636BB005E3BE3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -378,6 +379,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6C8B24142B1636BB005E3BE3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# Path to the xcconfig file to be generated\nXCCONFIG_FILE=\"User.xcconfig\"\n\n# Check if the xcconfig file already exists\nif [ ! -f \"$XCCONFIG_FILE\" ]; then\n    # Environment variable that contains the bundle identifier\n    #BUNDLE_IDENTIFIER=$1\n    \n    DEVELOPMENT_TEAM = $1\n    BUNDLE_ID_PREFIX = $2\n    PODCAST_INDEX_API_KEY = $3\n    PODCAST_INDEX_API_SECRET = $4\n    PODCAST_INDEX_USER_AGENT = $5\n\n    # Write the configuration to the xcconfig file\n    echo \"DEVELOPMENT_TEAM = $DEVELOPMENT_TEAM\" > $XCCONFIG_FILE\n    echo \"BUNDLE_ID_PREFIX = $BUNDLE_ID_PREFIX\" > $XCCONFIG_FILE\n    echo \"PODCAST_INDEX_API_KEY = $PODCAST_INDEX_API_KEY\" > $XCCONFIG_FILE\n    echo \"PODCAST_INDEX_API_SECRET = $PODCAST_INDEX_API_SECRET\" > $XCCONFIG_FILE\n    echo \"PODCAST_INDEX_USER_AGENT = $PODCAST_INDEX_USER_AGENT\" > $XCCONFIG_FILE\n\n    echo \"Generated $XCCONFIG_FILE\"\nelse\n    echo \"$XCCONFIG_FILE already exists. No changes made.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6C15D2442A095221001CBAAD /* Sources */ = {

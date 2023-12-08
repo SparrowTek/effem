@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+fileprivate struct AdaptiveFontColorWithThemeColorBackgroundViewModifier: ViewModifier {
+    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
+    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.self) var environment
+    
+    private var backgroundColor: Color {
+        colorScheme == .light ? lightThemeColor.color : darkThemeColor.color
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(Color.adaptiveColor(for: backgroundColor, lightColorToDisplay: .white, darkColorToDisplay: .black, in: environment))
+    }
+}
+
+fileprivate struct AdaptiveFontColorViewModifier: ViewModifier {
+    @Environment(\.self) var environment
+    let backgroundColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(Color.adaptiveColor(for: backgroundColor, lightColorToDisplay: .white, darkColorToDisplay: .black, in: environment))
+    }
+}
+
 fileprivate struct SetForegroundStyleViewModifier: ViewModifier {
     @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
     @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
@@ -46,5 +72,13 @@ extension View {
     
     func setForegroundStyle() -> some View {
         modifier(SetForegroundStyleViewModifier())
+    }
+    
+    func adaptiveFontWithThemeColorBackground() -> some View {
+        modifier(AdaptiveFontColorWithThemeColorBackgroundViewModifier())
+    }
+    
+    func adaptiveFontColor(with background: Color) -> some View {
+        modifier(AdaptiveFontColorViewModifier(backgroundColor: background))
     }
 }

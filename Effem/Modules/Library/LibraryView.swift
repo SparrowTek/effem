@@ -103,12 +103,11 @@ fileprivate struct LibraryShowCell: View {
                 CommonImage(image: .url(url: imageURL, sfSymbol: "photo"))
                     .frame(width: 75, height: 75)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
-                Circle()
-                    .fill(.green)
+                ThemedCircle()
                     .frame(width: 20)
                     .overlay(
                         Text("1")
-                            .foregroundStyle(.primaryWhite)
+                            .adaptiveFontWithThemeColorBackground()
                     )
                     .offset(x: 12, y: -12)
             }
@@ -148,8 +147,7 @@ fileprivate struct LibraryPodcastCell: View {
             
             Spacer()
             
-            Circle()
-                .fill(.green)
+            ThemedCircle()
                 .frame(width: 10)
         }
         .listRowBackground(Color.primaryBackground)

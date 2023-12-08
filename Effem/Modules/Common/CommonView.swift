@@ -11,6 +11,7 @@ fileprivate struct CommonView: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             Color.primaryBackground
+                .ignoresSafeArea()
             content
         }
     }

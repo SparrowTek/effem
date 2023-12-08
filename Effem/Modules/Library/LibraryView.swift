@@ -20,7 +20,27 @@ struct LibraryPresenter: View {
 }
 
 struct LibraryView: View {
-    @State private var searchText = ""
+    private var tabs: [UnderlinedTab] = [
+        .init(id: 0, title: "episodes"),
+        .init(id: 1, title: "shows"),
+    ]
+    
+    var body: some View {
+        VStack {
+            UnderlinedTabView(tabs: tabs, tabViewStyle: .automatic) {
+                LibraryEpisodesView()
+                    .tag(0)
+                
+                LibraryShowsView()
+                    .tag(1)
+            }
+        }
+        .navBar()
+        .commonView()
+    }
+}
+
+fileprivate struct LibraryEpisodesView: View {
     @Query private var podcasts: [FMPodcast]
     @Environment(\.modelContext) private var modelContext
     
@@ -32,15 +52,65 @@ struct LibraryView: View {
             .onDelete(perform: deletePodcast)
         }
         .listStyle(.plain)
-        .navBar()
         .commonView()
-        .searchable(text: $searchText)
     }
     
     private func deletePodcast(_ indexSet: IndexSet) {
         for item in indexSet {
             let podcast = podcasts[item]
             modelContext.delete(podcast)
+        }
+    }
+}
+
+fileprivate struct LibraryShowsView: View {
+    @Query private var podcasts: [FMPodcast]
+    
+    private let columns = [
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 0),
+    ]
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 0) {
+                ForEach(podcasts) {
+                    LibraryShowCell(podcast: $0)
+                }
+            }
+            .foregroundStyle(.accent)
+        }
+        .scrollIndicators(.hidden)
+        .commonView()
+    }
+}
+
+fileprivate struct LibraryShowCell: View {
+    var podcast: FMPodcast
+    
+    var imageURL: String? {
+        if let artwork = podcast.artwork {
+            return artwork
+        } else {
+            return podcast.image
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            ZStack(alignment: .topTrailing) {
+                CommonImage(image: .url(url: imageURL, sfSymbol: "photo"))
+                    .frame(width: 75, height: 75)
+                    .clipShape(RoundedRectangle(cornerRadius: 8.0))
+                Text("1")
+                    .background(
+                        Circle()
+                            .fill(.green)
+                    )
+            }
+            
+            Text(podcast.title ?? "")
         }
     }
 }
@@ -84,13 +154,11 @@ fileprivate struct LibraryPodcastCell: View {
 }
 
 #Preview {
-    NavigationStack {
-        LibraryView()
-            .environment(AppState())
-            .environment(LibraryState(parentState: .init()))
-            .environment(MediaPlaybackManager.shared)
-            #if DEBUG
-            .modelContainer(previewContainer)
-            #endif
-    }
+    LibraryPresenter()
+        .environment(AppState())
+        .environment(LibraryState(parentState: .init()))
+        .environment(MediaPlaybackManager.shared)
+        #if DEBUG
+        .modelContainer(previewContainer)
+        #endif
 }

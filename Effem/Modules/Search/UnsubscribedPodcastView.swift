@@ -18,7 +18,8 @@ struct UnsubscribedPodcastView: View {
     let podcast: Podcast
     
     private var isSubscribed: Bool {
-        guard let podcastsMatchingFilter = try? podcasts.filter(#Predicate { $0.podcastGuid == podcast.podcastGuid }) else { return false }
+        let guid = podcast.podcastGuid
+        guard let podcastsMatchingFilter = try? podcasts.filter(#Predicate { $0.podcastGuid == guid }) else { return false }
         return podcastsMatchingFilter.count > 0
     }
     

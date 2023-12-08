@@ -28,7 +28,7 @@ struct LibraryView: View {
     var body: some View {
         VStack {
             UnderlinedTabView(tabs: tabs, tabViewStyle: .automatic) {
-                LibraryEpisodesView()
+                LibraryShowsView()
                     .tag(0)
                 
                 LibraryShowsView()
@@ -103,14 +103,19 @@ fileprivate struct LibraryShowCell: View {
                 CommonImage(image: .url(url: imageURL, sfSymbol: "photo"))
                     .frame(width: 75, height: 75)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
-                Text("1")
-                    .background(
-                        Circle()
-                            .fill(.green)
+                Circle()
+                    .fill(.green)
+                    .frame(width: 20)
+                    .overlay(
+                        Text("1")
+                            .foregroundStyle(.primaryWhite)
                     )
+                    .offset(x: 12, y: -12)
             }
+            .frame(width: 100, height: 100)
             
             Text(podcast.title ?? "")
+                .lineLimit(2, reservesSpace: true)
         }
     }
 }

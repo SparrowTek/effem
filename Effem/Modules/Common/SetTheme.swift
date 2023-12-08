@@ -24,14 +24,14 @@ fileprivate struct SetThemeViewModifier: ViewModifier {
     private var lightColor: Color {
         guard let lightThemeColor,
               let colorData = lightThemeColor.data(using: .utf8),
-              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accentColor }
+              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accent }
         return Color(colorResolved)
     }
     
     private var darkColor: Color {
         guard let darkThemeColor,
               let colorData = darkThemeColor.data(using: .utf8),
-              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accentColor }
+              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accent }
         return Color(colorResolved)
     }
     

@@ -14,8 +14,8 @@ struct ThemeSettingsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.self) var environment
     @State private var selectedColorScheme = 0
-    @State private var lightModeColor: Color = .accentColor
-    @State private var darkModeColor: Color = .accentColor
+    @State private var lightModeColor: Color = .accent
+    @State private var darkModeColor: Color = .accent
     
     var body: some View {
         Form {

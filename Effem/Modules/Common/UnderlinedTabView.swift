@@ -36,9 +36,6 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
 }
 
 struct UnderlinedTabHStack: View {
-    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
-    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
-    @Environment(\.colorScheme) private var colorScheme
     @Binding var selectedTabIndex: Int
     let tabs: [UnderlinedTab]
     
@@ -56,8 +53,7 @@ struct UnderlinedTabHStack: View {
                 if let selected = preferences.first(where: { $0.tab.id == selectedTabIndex }) {
                     let frame = proxy[selected.anchor]
                     
-                    Rectangle()
-                        .fill(colorScheme == .light ? lightThemeColor.color : darkThemeColor.color)
+                    ThemedRectangle()
                         .frame(width: frame.width, height: 2)
                         .position(x: frame.midX, y: frame.maxY)
                 }

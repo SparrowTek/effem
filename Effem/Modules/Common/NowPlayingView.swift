@@ -88,7 +88,7 @@ fileprivate struct EpisodeDetailsView: View {
                 Text(mediaPlaybackManager.episode?.title ?? "")
                     .font(.headline)
                 Text(mediaPlaybackManager.podcast?.title ?? "")
-                    .foregroundColor(.accentColor)
+                    .setForegroundStyle()
             }
             
             Spacer()

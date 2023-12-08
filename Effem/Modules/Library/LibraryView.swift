@@ -79,7 +79,7 @@ fileprivate struct LibraryShowsView: View {
                     LibraryShowCell(podcast: $0)
                 }
             }
-            .foregroundStyle(.accent)
+            .setForegroundStyle()
         }
         .scrollIndicators(.hidden)
         .commonView()

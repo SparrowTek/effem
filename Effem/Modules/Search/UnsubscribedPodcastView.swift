@@ -36,7 +36,7 @@ struct UnsubscribedPodcastView: View {
                     Text(podcast.title ?? "")
                         .font(.title2)
                         .multilineTextAlignment(.leading)
-                        .foregroundStyle(.accent)
+                        .setForegroundStyle()
                     
                     Button(action: triggerSubscibe) {
                         Group {
@@ -58,7 +58,7 @@ struct UnsubscribedPodcastView: View {
             .padding()
             
             Text(podcast.podcastDescription ?? "")
-                .foregroundStyle(.accent)
+                .setForegroundStyle()
                 .padding(.horizontal)
             
             List {

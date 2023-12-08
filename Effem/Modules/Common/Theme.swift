@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+fileprivate struct SetForegroundStyleViewModifier: ViewModifier {
+    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
+    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
+    @Environment(\.colorScheme) private var colorScheme
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(colorScheme == .light ? lightThemeColor.color : darkThemeColor.color)
+    }
+}
+
 fileprivate struct SetThemeViewModifier: ViewModifier {
     @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
     @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
@@ -21,23 +32,9 @@ fileprivate struct SetThemeViewModifier: ViewModifier {
         }
     }
     
-    private var lightColor: Color {
-        guard let lightThemeColor,
-              let colorData = lightThemeColor.data(using: .utf8),
-              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accent }
-        return Color(colorResolved)
-    }
-    
-    private var darkColor: Color {
-        guard let darkThemeColor,
-              let colorData = darkThemeColor.data(using: .utf8),
-              let colorResolved = try? JSONDecoder().decode(Color.Resolved.self, from: colorData) else { return .accent }
-        return Color(colorResolved)
-    }
-    
     func body(content: Content) -> some View {
         content
-            .tint(colorScheme == .light ? lightColor : darkColor)
+            .tint(colorScheme == .light ? lightThemeColor.color : darkThemeColor.color)
             .preferredColorScheme(setColorScheme)
     }
 }
@@ -45,5 +42,9 @@ fileprivate struct SetThemeViewModifier: ViewModifier {
 extension View {
     func setTheme() -> some View {
         modifier(SetThemeViewModifier())
+    }
+    
+    func setForegroundStyle() -> some View {
+        modifier(SetForegroundStyleViewModifier())
     }
 }

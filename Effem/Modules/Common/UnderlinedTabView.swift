@@ -36,6 +36,9 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
 }
 
 struct UnderlinedTabHStack: View {
+    @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
+    @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var selectedTabIndex: Int
     let tabs: [UnderlinedTab]
     
@@ -54,7 +57,7 @@ struct UnderlinedTabHStack: View {
                     let frame = proxy[selected.anchor]
                     
                     Rectangle()
-                        .fill(.accent)
+                        .fill(colorScheme == .light ? lightThemeColor.color : darkThemeColor.color)
                         .frame(width: frame.width, height: 2)
                         .position(x: frame.midX, y: frame.maxY)
                 }
@@ -70,7 +73,7 @@ struct UnderlinedTabButton: View {
     var body: some View {
         Button(action: selectionMade) {
             Text(tab.title)
-                .foregroundStyle(.accent)
+                .setForegroundStyle()
         }
         .buttonStyle(.plain)
         .accessibilityElement()

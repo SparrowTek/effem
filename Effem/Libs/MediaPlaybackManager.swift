@@ -285,13 +285,20 @@ class MediaPlaybackManager: @unchecked Sendable {
         subscriptions.removeAll()
     }
     
-    func didSliderChanged(_ didChange: Bool) {
-        acceptProgressUpdates = !didChange
-        if didChange {
-            pause()
-        } else {
-            seek(to: progress)
-            play()
+    func userIsMovingSlider() {
+        acceptProgressUpdates = false
+        
+        let time = convertFloatToCMTime(progress)
+        timeDidUpdate(time)
+    }
+    
+    func userStoppedMovingSlider() {
+        seek(to: progress)
+        
+        // TODO: is this the best way to solve the issue?
+        Task {
+            try? await Task.sleep(nanoseconds: 100_000_000)
+            acceptProgressUpdates = true
         }
     }
 }

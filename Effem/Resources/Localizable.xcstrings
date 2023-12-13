@@ -34,6 +34,9 @@
     "color scheme" : {
 
     },
+    "Common view" : {
+
+    },
     "dark" : {
 
     },
@@ -44,6 +47,9 @@
 
     },
     "DOWNLOADS" : {
+
+    },
+    "EFFEM" : {
 
     },
     "Effem is powered by Podcasting 2.0 and the [Podcast Index](https://podcastindex.org)" : {
@@ -59,6 +65,9 @@
 
     },
     "episodes" : {
+
+    },
+    "Episodes" : {
 
     },
     "iCloud sync" : {
@@ -100,7 +109,13 @@
     "Privacy policy" : {
 
     },
+    "search" : {
+
+    },
     "Search" : {
+
+    },
+    "Search View" : {
 
     },
     "Selected Color Scheme" : {
@@ -110,6 +125,9 @@
 
     },
     "shows" : {
+
+    },
+    "Shows" : {
 
     },
     "shows, episidoes, and more" : {
@@ -134,6 +152,12 @@
 
     },
     "term" : {
+
+    },
+    "test" : {
+
+    },
+    "Test" : {
 
     },
     "theme" : {

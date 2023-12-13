@@ -133,6 +133,7 @@ fileprivate struct AudioProgressView: View {
     var body: some View {        
         VStack {
             PlaybackSlider()
+                .padding(12)
             
             HStack {
                 Text(mediaPlaybackManager.currentTime)

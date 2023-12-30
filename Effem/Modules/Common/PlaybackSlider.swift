@@ -31,12 +31,11 @@ struct PlaybackSlider: View {
                     .frame(width: geometry.size.width, height: height)
                 
                 HStack {
-                    Rectangle()
+//                    // TODO: corners should be all when the progress is near the end
+                    UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: height / 2, bottomLeading: height / 2, bottomTrailing: height / 2, topTrailing: height / 2), style: .circular)
                         .foregroundStyle(.white)
                         .frame(width: sliderVal, height: height)
                     
-                    // TODO: corners should be all when the progress is near the end
-                        .roundedCorners(height, corners: [.topLeft, .bottomLeft])
                     Spacer()
                 }
             }

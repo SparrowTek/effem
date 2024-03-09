@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
+@MainActor
 struct UnsubscribedPodcastView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var subscribeInProgress = false

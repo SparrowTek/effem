@@ -15,6 +15,7 @@ enum ImageType {
     case data(Data?, sfSymbol: String)
 }
 
+@MainActor
 struct CommonImage: View {
     let image: ImageType
     
@@ -55,6 +56,7 @@ struct CommonImage: View {
     }
 }
 
+@MainActor
 fileprivate struct CommonSystemImage: View {
     var systemName: String
     

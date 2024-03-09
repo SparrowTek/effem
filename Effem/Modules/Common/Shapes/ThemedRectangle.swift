@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct ThemedRectangle: View {
     @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
     @AppStorage(Build.Constants.UserDefault.darkThemeColor) private var darkThemeColor: String?

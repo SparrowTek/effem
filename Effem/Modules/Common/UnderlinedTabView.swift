@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabViewStyle {
     let tabs: [UnderlinedTab]
     let tabViewStyle: Style
@@ -35,6 +36,7 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
     }
 }
 
+@MainActor
 struct UnderlinedTabHStack: View {
     @Binding var selectedTabIndex: Int
     let tabs: [UnderlinedTab]
@@ -62,6 +64,7 @@ struct UnderlinedTabHStack: View {
     }
 }
 
+@MainActor
 struct UnderlinedTabButton: View {
     var tab: UnderlinedTab
     @Binding var selection: Int

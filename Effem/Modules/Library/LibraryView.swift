@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import NukeUI
 
+@MainActor
 struct LibraryPresenter: View {
     @Environment(LibraryState.self) private var state: LibraryState
     
@@ -19,6 +20,7 @@ struct LibraryPresenter: View {
     }
 }
 
+@MainActor
 struct LibraryView: View {
     private var tabs: [UnderlinedTab] = [
         .init(id: 0, title: "episodes"),
@@ -40,6 +42,7 @@ struct LibraryView: View {
     }
 }
 
+@MainActor
 fileprivate struct LibraryEpisodesView: View {
     @Query private var podcasts: [FMPodcast]
     @Environment(\.modelContext) private var modelContext
@@ -63,6 +66,7 @@ fileprivate struct LibraryEpisodesView: View {
     }
 }
 
+@MainActor
 fileprivate struct LibraryShowsView: View {
     @Query private var podcasts: [FMPodcast]
     
@@ -86,6 +90,7 @@ fileprivate struct LibraryShowsView: View {
     }
 }
 
+@MainActor
 fileprivate struct LibraryShowCell: View {
     var podcast: FMPodcast
     
@@ -119,6 +124,7 @@ fileprivate struct LibraryShowCell: View {
     }
 }
 
+@MainActor
 fileprivate struct LibraryPodcastCell: View {
     var podcast: FMPodcast
     

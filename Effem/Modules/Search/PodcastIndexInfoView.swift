@@ -8,6 +8,7 @@
 import SwiftUI
 import PodcastIndexKit
 
+@MainActor
 struct PodcastIndexInfoView: View {
     @Environment(PodcastIndexKit.self) private var podcastIndex
     @State private var stats: StatProperties?

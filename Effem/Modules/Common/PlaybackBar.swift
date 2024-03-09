@@ -8,7 +8,7 @@
 import SwiftUI
 import NukeUI
 
-
+@MainActor
 struct PlaybackBar: ViewModifier {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     
@@ -24,6 +24,7 @@ struct PlaybackBar: ViewModifier {
     }
 }
 
+@MainActor
 fileprivate struct PlaybackBarView: View {
     @Environment(AppState.self) private var state
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
@@ -86,7 +87,7 @@ fileprivate struct PlaybackBarView: View {
     }
     
     private func playPause() async {
-        await mediaPlaybackManager.playPause()
+        mediaPlaybackManager.playPause()
     }
     
     private func triggerSkipAhead() {
@@ -94,7 +95,7 @@ fileprivate struct PlaybackBarView: View {
     }
     
     private func skipAhead() async {
-        await mediaPlaybackManager.skipAhead30()
+        mediaPlaybackManager.skipAhead30()
     }
     
     private func triggerGoBack() {
@@ -102,7 +103,7 @@ fileprivate struct PlaybackBarView: View {
     }
     
     private func goBack() async {
-        await mediaPlaybackManager.goBack15()
+        mediaPlaybackManager.goBack15()
     }
 }
 

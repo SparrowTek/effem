@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
+@MainActor
 struct AppPresenter: View {
     @Environment(AppState.self) private var state
     @Environment(PodcastIndexKit.self) private var podcastIndex
@@ -34,10 +35,10 @@ struct AppPresenter: View {
             
             if episodeResponse.items?.count ?? 0 > 0 {
                 let episode = episodeResponse.items?[0]
-                await MediaPlaybackManager.shared.setEpisode(episode)
+                MediaPlaybackManager.shared.setEpisode(episode)
                 
                 let podcastResponse = try await podcastIndex.podcastsService.podcast(byFeedId: episode?.feedId ?? 0)
-                await MediaPlaybackManager.shared.setPodcast(podcastResponse.feed)
+                MediaPlaybackManager.shared.setPodcast(podcastResponse.feed)
                 
                 if let podcast = podcastResponse.feed {
                     context.insert(FMPodcast(podcast: podcast))

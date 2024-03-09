@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct SettingsPresenter: View {
     @Environment(SettingsState.self) private var state
     
@@ -42,6 +43,7 @@ struct SettingsPresenter: View {
     }
 }
 
+@MainActor
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var icloudSync = false

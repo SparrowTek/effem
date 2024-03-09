@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 fileprivate struct NavBar: ViewModifier {
     @Environment(AppState.self) private var state
     

@@ -1,4 +1,5 @@
 {
+  "originHash" : "6e25c0693230baab91cf5a7e30367af2fa1fff29dc20d65d97e33aa5c65d5ad0",
   "pins" : [
     {
       "identity" : "nuke",
@@ -8,16 +9,7 @@
         "revision" : "1694798e876113d44f6ec6ead965d7286695981d",
         "version" : "12.2.0"
       }
-    },
-    {
-      "identity" : "podcastindexkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SparrowTek/PodcastIndexKit",
-      "state" : {
-        "revision" : "23c5d78db7911a993fc845c9feacc0d1cde6b05b",
-        "version" : "0.4.1"
-      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

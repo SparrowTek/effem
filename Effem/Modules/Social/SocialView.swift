@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct SocialPresenter: View {
     @Environment(SocialState.self) private var state
     
@@ -17,6 +18,7 @@ struct SocialPresenter: View {
     }
 }
 
+@MainActor
 struct SocialView: View {
     var body: some View {
         Text("SOCIAL")

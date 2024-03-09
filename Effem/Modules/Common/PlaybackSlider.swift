@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct PlaybackSlider: View {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     

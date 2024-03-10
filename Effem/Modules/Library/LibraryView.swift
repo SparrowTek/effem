@@ -30,7 +30,7 @@ struct LibraryView: View {
     var body: some View {
         VStack {
             UnderlinedTabView(tabs: tabs, tabViewStyle: .automatic) {
-                LibraryShowsView()
+                LibraryEpisodesView()
                     .tag(0)
                 
                 LibraryShowsView()

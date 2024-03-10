@@ -114,7 +114,7 @@ struct UnderlinedTabPreferenceKey: PreferenceKey {
         .init(id: 1, title: "Shows"),
     ]
     
-    return UnderlinedTabView(tabs: tabs, tabViewStyle: .automatic) {
+    return UnderlinedTabView(tabs: tabs, tabViewStyle: .page(indexDisplayMode: .never)) {
         Text("episodes")
             .foregroundStyle(.black)
             .tag(0)

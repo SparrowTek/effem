@@ -24,6 +24,7 @@ struct AppPresenter: View {
     }
     
     private func loadTestData() async {
+        guard isCanvas else { return }
         do {
             let episodeResponse = try await podcastIndex.episodesService.episodes(byFeedID: "41504")
             

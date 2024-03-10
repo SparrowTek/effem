@@ -8,28 +8,28 @@
 import SwiftUI
 import SwiftData
 
-typealias FMPodcast = FMPodcastSchemaV1.FMPodcast
-typealias FMEpisode = FMEpisodeSchemaV1.FMEpisode
+//typealias FMPodcast = FMPodcastSchemaV1.FMPodcast
+//typealias FMEpisode = FMEpisodeSchemaV1.FMEpisode
 
-@Model
-class FMModel {
-    init() {}
-}
-
-extension FMModel {
-    static let schema = SwiftData.Schema([
-        FMModel.self,
-        FMPodcast.self,
-        FMEpisode.self,
-    ])
-}
+//@Model
+//class FMModel {
+//    init() {}
+//}
+//
+//extension FMModel {
+//    static let schema = SwiftData.Schema([
+//        FMModel.self,
+//        FMPodcast.self,
+//        FMEpisode.self,
+//    ])
+//}
 
 struct EffemDataContainerViewModifier: ViewModifier {
     let container: ModelContainer
     
     init(inMemory: Bool) {
         do {
-            container = try ModelContainer(for: FMModel.schema, configurations: [ModelConfiguration(isStoredInMemoryOnly: inMemory)])
+            container = try ModelContainer(for: FMPodcast.self, FMEpisode.self, configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
         } catch {
             fatalError("Failed to create ModelContainer")
         }

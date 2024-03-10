@@ -9,21 +9,21 @@ import Foundation
 import SwiftData
 import PodcastIndexKit
 
-public enum FMEpisodeSchemaV1: VersionedSchema {
-    public static var versionIdentifier = Schema.Version(1, 0, 0)
+//public enum FMEpisodeSchemaV1: VersionedSchema {
+//    public static var versionIdentifier = Schema.Version(1, 0, 0)
+//    
+//    public static var models: [any PersistentModel.Type] {
+//        [FMEpisode.self]
+//    }
     
-    public static var models: [any PersistentModel.Type] {
-        [FMEpisode.self]
-    }
+@Model
+class FMEpisode {
+    let episode: Episode
+    var playPosition: Double
     
-    @Model
-    class FMEpisode {
-        let episode: Episode
-        var playPosition: Double
-        
-        init(episode: Episode, playPosition: Double = 0) {
-            self.episode = episode
-            self.playPosition = playPosition
-        }
+    init(episode: Episode, playPosition: Double = 0) {
+        self.episode = episode
+        self.playPosition = playPosition
     }
 }
+//}

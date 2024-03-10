@@ -14,7 +14,7 @@ import MediaPlayer
 
 @Observable
 @MainActor
-class MediaPlaybackManager: @unchecked Sendable {
+class MediaPlaybackManager {
     enum PlaybackType {
         case streaming
         case downlaod

@@ -85,16 +85,18 @@ struct UnderlinedTabButton: View {
     }
 }
 
+@MainActor
 struct UnderlinedTab: Identifiable, Equatable, Hashable {
     let id: Int
     let title: LocalizedStringResource
     
-    func hash(into hasher: inout Hasher) {
+    nonisolated func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine("\(title)")
     }
 }
 
+@MainActor
 struct UnderlinedTabPreference: Equatable {
     let tab: UnderlinedTab
     let anchor: Anchor<CGRect>

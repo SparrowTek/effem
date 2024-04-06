@@ -44,24 +44,23 @@ struct LibraryView: View {
 
 @MainActor
 fileprivate struct LibraryEpisodesView: View {
-    @Query private var podcasts: [FMPodcast]
+    @Query private var episodes: [FMEpisode]
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         List {
-            ForEach(podcasts) {
-                LibraryPodcastCell(podcast: $0)
+            ForEach(episodes) {
+                LibraryEpisodeCell(episode: $0)
             }
-            .onDelete(perform: deletePodcast)
+            .onDelete(perform: deleteEpisode)
         }
         .listStyle(.plain)
         .commonView()
     }
     
-    private func deletePodcast(_ indexSet: IndexSet) {
+    private func deleteEpisode(_ indexSet: IndexSet) {
         for item in indexSet {
-            let podcast = podcasts[item]
-            modelContext.delete(podcast)
+            modelContext.delete(episodes[item])
         }
     }
 }
@@ -125,14 +124,14 @@ fileprivate struct LibraryShowCell: View {
 }
 
 @MainActor
-fileprivate struct LibraryPodcastCell: View {
-    var podcast: FMPodcast
+fileprivate struct LibraryEpisodeCell: View {
+    var episode: FMEpisode
     
     var imageURL: String? {
-        if let artwork = podcast.artwork {
-            return artwork
+        if let image = episode.episode.image {
+            return image
         } else {
-            return podcast.image
+            return episode.episode.feedImage
         }
     }
     
@@ -143,9 +142,9 @@ fileprivate struct LibraryPodcastCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
             
             VStack(alignment: .leading) {
-                Text(podcast.title ?? "")
+                Text(episode.episode.title ?? "")
                     .font(.title2)
-                Text(podcast.author ?? "")
+                Text("TODO: GET AUTHOR")
                     .font(.footnote)
                 Spacer()
             }

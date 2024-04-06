@@ -19,6 +19,7 @@ import PodcastIndexKit
 @Model
 class FMEpisode {
     let episode: Episode
+    let podcast: Podcast?
     var playPosition: Double
     
     init(episode: Episode, playPosition: Double = 0) {

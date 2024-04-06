@@ -33,13 +33,9 @@ struct SettingsPresenter: View {
                     case .storage:
                         Text("Storage")
                             .interactiveDismissDisabled()
-                    case .theme:
-                        ThemeSettingsView()
-                            .interactiveDismissDisabled()
                     }
                 }
         }
-        
     }
 }
 
@@ -50,15 +46,15 @@ struct SettingsView: View {
     @State private var allowDownloading = false
     @State private var allowStreaming = false
     
+    // MARK: color scheme properties
+    @State private var selectedColorScheme = 0
+    @AppStorage(Build.Constants.UserDefault.colorScheme) private var colorSchemeString: String?
+    
     var body: some View {
         Form {
             Section {
                 NavigationLink(value: SettingsState.NavigationLink.storage) {
                     Label("storage", systemImage: "externaldrive.fill")
-                }
-                
-                NavigationLink(value: SettingsState.NavigationLink.theme) {
-                    Label("theme", systemImage: "line.3.crossed.swirl.circle.fill")
                 }
             }
             
@@ -69,6 +65,15 @@ struct SettingsView: View {
             
             Section("iCloud sync") {
                 Toggle("enable sync", isOn: $icloudSync)
+            }
+            
+            Section("color scheme") {
+                Picker("selected color scheme", selection: $selectedColorScheme) {
+                    Text("system").tag(0)
+                    Text("light").tag(1)
+                    Text("dark").tag(2)
+                }
+                .pickerStyle(.segmented)
             }
             
             Section {
@@ -96,6 +101,25 @@ struct SettingsView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Done", action: { dismiss() })
             }
+        }
+        .onAppear(perform: setSelectedColorScheme)
+        .onChange(of: selectedColorScheme, updateColorScheme)
+    }
+    
+    // MARK: Color scheme methods
+    private func setSelectedColorScheme() {
+        switch colorSchemeString {
+        case Build.Constants.Theme.light: selectedColorScheme = 1
+        case Build.Constants.Theme.dark: selectedColorScheme = 2
+        default: selectedColorScheme = 0
+        }
+    }
+    
+    private func updateColorScheme() {
+        switch selectedColorScheme {
+        case 1: colorSchemeString = Build.Constants.Theme.light
+        case 2: colorSchemeString = Build.Constants.Theme.dark
+        default: colorSchemeString = nil
         }
     }
 }

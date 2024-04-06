@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/*
 @MainActor
 struct ThemeSettingsView: View {
     @AppStorage(Build.Constants.UserDefault.lightThemeColor) private var lightThemeColor: String?
@@ -94,3 +95,4 @@ struct ThemeSettingsView: View {
 #Preview {
     ThemeSettingsView()
 }
+*/

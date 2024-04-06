@@ -16,7 +16,6 @@ class SettingsState {
         case podcasterInfo
         case podcastIndexInfo
         case storage
-        case theme
     }
     
     private unowned let parentState: AppState

@@ -10,7 +10,6 @@ import PodcastIndexKit
 
 @MainActor
 struct PodcastIndexInfoView: View {
-    @Environment(PodcastIndexKit.self) private var podcastIndex
     @State private var stats: StatProperties?
     
     var body: some View {
@@ -39,7 +38,7 @@ struct PodcastIndexInfoView: View {
     }
     
     private func getStats() async {
-        stats = try? await podcastIndex.statsService.current().stats
+        stats = try? await StatsService().current().stats
         
     }
 }

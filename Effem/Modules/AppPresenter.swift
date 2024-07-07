@@ -12,7 +12,6 @@ import PodcastIndexKit
 @MainActor
 struct AppPresenter: View {
     @Environment(AppState.self) private var state
-    @Environment(PodcastIndexKit.self) private var podcastIndex
     @Environment(\.modelContext) private var context
     
     var body: some View {
@@ -26,7 +25,7 @@ struct AppPresenter: View {
     private func loadTestData() async {
         guard isCanvas else { return }
         do {
-            let episodeResponse = try await podcastIndex.episodesService.episodes(byFeedID: "41504")
+            let episodeResponse = try await EpisodesService().episodes(byFeedID: "41504")
             
             if let episodes = episodeResponse.items {
                 for episode in episodes {
@@ -38,7 +37,7 @@ struct AppPresenter: View {
                 let episode = episodeResponse.items?[0]
                 MediaPlaybackManager.shared.setEpisode(episode)
                 
-                let podcastResponse = try await podcastIndex.podcastsService.podcast(byFeedId: episode?.feedId ?? 0)
+                let podcastResponse = try await PodcastsService().podcast(byFeedId: episode?.feedId ?? 0)
                 MediaPlaybackManager.shared.setPodcast(podcastResponse.feed)
                 
                 if let podcast = podcastResponse.feed {

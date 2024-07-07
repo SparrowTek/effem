@@ -62,15 +62,14 @@ class MediaPlaybackManager {
     
     private func loadTestData() {
         Task {
-            let podcastIndex = PodcastIndexKit()
             do {
-                let episodeResponse = try await podcastIndex.episodesService.episodes(byFeedID: "41504")
+                let episodeResponse = try await EpisodesService().episodes(byFeedID: "41504")
                 
                 if episodeResponse.items?.count ?? 0 > 0 {
                     let episode = episodeResponse.items?[0]
                     self.episode = episode
                     
-                    let podcastResponse = try await podcastIndex.podcastsService.podcast(byFeedId: episode?.feedId ?? 0)
+                    let podcastResponse = try await PodcastsService().podcast(byFeedId: episode?.feedId ?? 0)
                     podcast = podcastResponse.feed
                     print("EPISODE: \(String(describing: episode))")
                 }

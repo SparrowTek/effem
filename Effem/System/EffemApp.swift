@@ -15,10 +15,6 @@ struct EffemApp: App {
     @State private var state = AppState()
     @State private var mediaPlaybackManager = MediaPlaybackManager.shared
     
-    init() {
-        setupPodcastIndexKit()
-    }
-    
     var body: some Scene {
         WindowGroup {
             AppPresenter()
@@ -27,14 +23,15 @@ struct EffemApp: App {
                 .environment(mediaPlaybackManager)
                 .setupModel()
                 .setTheme()
+                .task { await setupPodcastIndexKit() }
         }
     }
     
-    private func setupPodcastIndexKit() {
+    private func setupPodcastIndexKit() async {
         guard let infoDictionary = Bundle.main.infoDictionary,
               let apiKey = infoDictionary["PodcastIndexAPIKey"] as? String,
               let apiSecret = infoDictionary["PodcastIndexAPISecret"] as? String,
               let userAgent = infoDictionary["PodcastIndexUserAgent"] as? String else { fatalError("PodcastIndexKit API key, API secret, and User Agent are not properly set in your User.xcconfig file") }
-        PodcastIndexKit.setup(apiKey: apiKey, apiSecret: apiSecret, userAgent: userAgent)
+        await PodcastIndexKit.setup(apiKey: apiKey, apiSecret: apiSecret, userAgent: userAgent)
     }
 }

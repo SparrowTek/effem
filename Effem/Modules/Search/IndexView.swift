@@ -57,7 +57,6 @@ struct IndexView: View {
         }
     }
     
-    @Environment(PodcastIndexKit.self) private var podcastIndex
     @Environment(IndexState.self) private var state: IndexState
     @State private var query = ""
     @State private var scope: Int = Scope.all.rawValue
@@ -105,11 +104,11 @@ struct IndexView: View {
         case .all:
             break
         case .title:
-            state.podcasts = (try? await podcastIndex.searchService.search(byTitle: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byTitle: query).feeds) ?? []
         case .person:
-            state.podcasts = (try? await podcastIndex.searchService.search(byPerson: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byPerson: query).feeds) ?? []
         case .term:
-            state.podcasts = (try? await podcastIndex.searchService.search(byTerm: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byTerm: query).feeds) ?? []
         }
     }
     
@@ -119,7 +118,7 @@ struct IndexView: View {
     
     private func getRecentPodcasts() async {
         guard state.podcasts.isEmpty else { return }
-        guard let episodesArrayResponse = try? await podcastIndex.recentService.recentEpisodes(),
+        guard let episodesArrayResponse = try? await RecentService().recentEpisodes(),
                 let items = episodesArrayResponse.items else { return }
         
         let feedIDsArray = items.map { $0.feedId }
@@ -128,7 +127,7 @@ struct IndexView: View {
         let podcasts: [Podcast?]? = try? await withThrowingTaskGroup(of: Podcast?.self) { group in
             for feedID in feedIDs {
                 if let feedID {
-                    group.addTask { return try await podcastIndex.podcastsService.podcast(byFeedId: feedID).feed }
+                    group.addTask { return try await PodcastsService().podcast(byFeedId: feedID).feed }
                 }
             }
             

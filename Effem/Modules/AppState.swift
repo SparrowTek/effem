@@ -14,16 +14,11 @@ public class AppState {
         case main
     }
     
-    enum Tab {
-        case library
-        case index
-        case social
-    }
-    
     enum Sheet: Int, Identifiable {
         case nowPlaying
         case settings
         case downloads
+        case search
         
         var id: Int {
             self.rawValue
@@ -31,7 +26,6 @@ public class AppState {
     }
 
     var route: Route = .main
-    var tab: Tab = .library
     var sheet: Sheet? = nil
     
     var downloadInProgress = true
@@ -40,10 +34,6 @@ public class AppState {
     
     @ObservationIgnored
     lazy var indexState = IndexState(parentState: self)
-    @ObservationIgnored
-    lazy var libraryState = LibraryState(parentState: self)
-    @ObservationIgnored
-    lazy var socialState = SocialState(parentState: self)
     @ObservationIgnored
     lazy var settingsState = SettingsState(parentState: self)
     
@@ -55,8 +45,8 @@ public class AppState {
         sheet = .downloads
     }
     
-    func addItem() {
-        
+    func openSearch() {
+        sheet = .search
     }
     
     func openNowPlaying() {

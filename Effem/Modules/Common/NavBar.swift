@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#warning("this modifier should probably be deprecated")
 @MainActor
 fileprivate struct NavBar: ViewModifier {
     @Environment(AppState.self) private var state
@@ -39,8 +40,8 @@ fileprivate struct NavBar: ViewModifier {
                             }
                         }
                         
-                        Button(action: addItem) {
-                            Image(systemName: "plus.app")
+                        Button(action: openSearch) {
+                            Image(systemName: "magnifyingglass")
                         }
                     }
                 }
@@ -56,8 +57,8 @@ fileprivate struct NavBar: ViewModifier {
         state.openDownloads()
     }
     
-    private func addItem() {
-        state.addItem()
+    private func openSearch() {
+        state.openSearch()
     }
 }
 

@@ -30,12 +30,9 @@
 		6C726B162A17FB9900C76C48 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C726B152A17FB9900C76C48 /* Colors.xcassets */; };
 		6C726B232A18029200C76C48 /* MediaPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B222A18029200C76C48 /* MediaPlaybackManager.swift */; };
 		6C726B252A1808C000C76C48 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B242A1808C000C76C48 /* MainTabBar.swift */; };
-		6C726B292A180BFD00C76C48 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B282A180BFD00C76C48 /* LibraryView.swift */; };
+		6C726B292A180BFD00C76C48 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B282A180BFD00C76C48 /* MainPresenter.swift */; };
 		6C726B2B2A180C0500C76C48 /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B2A2A180C0500C76C48 /* IndexView.swift */; };
-		6C726B2D2A180C5400C76C48 /* LibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B2C2A180C5400C76C48 /* LibraryState.swift */; };
 		6C726B2F2A180C9000C76C48 /* IndexState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B2E2A180C9000C76C48 /* IndexState.swift */; };
-		6C726B322A18101400C76C48 /* SocialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B312A18101400C76C48 /* SocialState.swift */; };
-		6C726B342A18103100C76C48 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B332A18103100C76C48 /* SocialView.swift */; };
 		6C726B372A18154300C76C48 /* PlaybackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B362A18154300C76C48 /* PlaybackBar.swift */; };
 		6C726B392A181B7F00C76C48 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B382A181B7F00C76C48 /* NavBar.swift */; };
 		6C8B242F2B163F48005E3BE3 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B242E2B163F48005E3BE3 /* Nuke */; };
@@ -87,12 +84,9 @@
 		6C726B1C2A17FBDF00C76C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C726B222A18029200C76C48 /* MediaPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlaybackManager.swift; sourceTree = "<group>"; };
 		6C726B242A1808C000C76C48 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
-		6C726B282A180BFD00C76C48 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		6C726B282A180BFD00C76C48 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		6C726B2A2A180C0500C76C48 /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
-		6C726B2C2A180C5400C76C48 /* LibraryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryState.swift; sourceTree = "<group>"; };
 		6C726B2E2A180C9000C76C48 /* IndexState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexState.swift; sourceTree = "<group>"; };
-		6C726B312A18101400C76C48 /* SocialState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialState.swift; sourceTree = "<group>"; };
-		6C726B332A18103100C76C48 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		6C726B362A18154300C76C48 /* PlaybackBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackBar.swift; sourceTree = "<group>"; };
 		6C726B382A181B7F00C76C48 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -232,11 +226,10 @@
 				6C726B132A17F8A000C76C48 /* AppPresenter.swift */,
 				6C726B112A17F87400C76C48 /* AppState.swift */,
 				6C726B242A1808C000C76C48 /* MainTabBar.swift */,
+				6C726B282A180BFD00C76C48 /* MainPresenter.swift */,
 				6C726B352A18152600C76C48 /* Common */,
-				6C726B272A1809F900C76C48 /* Library */,
 				6C8EF8D72B11185E00F2C6A7 /* Settings */,
 				6C726B262A1809F200C76C48 /* Search */,
-				6C726B302A180FF800C76C48 /* Social */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -270,24 +263,6 @@
 				6CB84B452B0011DC00E17E78 /* UnsubscribedPodcastView.swift */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		6C726B272A1809F900C76C48 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				6C726B282A180BFD00C76C48 /* LibraryView.swift */,
-				6C726B2C2A180C5400C76C48 /* LibraryState.swift */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		6C726B302A180FF800C76C48 /* Social */ = {
-			isa = PBXGroup;
-			children = (
-				6C726B312A18101400C76C48 /* SocialState.swift */,
-				6C726B332A18103100C76C48 /* SocialView.swift */,
-			);
-			path = Social;
 			sourceTree = "<group>";
 		};
 		6C726B352A18152600C76C48 /* Common */ = {
@@ -438,9 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C726B322A18101400C76C48 /* SocialState.swift in Sources */,
 				6C726B122A17F87400C76C48 /* AppState.swift in Sources */,
-				6C726B2D2A180C5400C76C48 /* LibraryState.swift in Sources */,
 				6C2D75432A1D4BC3003F2C5B /* Date.swift in Sources */,
 				6CA1F91C2B2359F70064C3B6 /* OptionalString.swift in Sources */,
 				6C726B2F2A180C9000C76C48 /* IndexState.swift in Sources */,
@@ -464,7 +437,7 @@
 				6C70155E2B03A68D003D6160 /* Podcast.swift in Sources */,
 				6C726B142A17F8A000C76C48 /* AppPresenter.swift in Sources */,
 				6CA1F9232B2384130064C3B6 /* ThemedCircle.swift in Sources */,
-				6C726B292A180BFD00C76C48 /* LibraryView.swift in Sources */,
+				6C726B292A180BFD00C76C48 /* MainPresenter.swift in Sources */,
 				6CB84B442B0002FD00E17E78 /* PodcastIndexInfoView.swift in Sources */,
 				6C8EF8DB2B11352F00F2C6A7 /* Build.swift in Sources */,
 				6C0AD7232AF34FB60020350C /* FMModelOptions.swift in Sources */,
@@ -474,7 +447,6 @@
 				6C726B232A18029200C76C48 /* MediaPlaybackManager.swift in Sources */,
 				6C15D24C2A095221001CBAAD /* EffemApp.swift in Sources */,
 				6C2D75452A1D56CF003F2C5B /* NowPlayingView.swift in Sources */,
-				6C726B342A18103100C76C48 /* SocialView.swift in Sources */,
 				6C31166B2AD872FD0066FED9 /* CommonView.swift in Sources */,
 				6C8EF8D62B1117A500F2C6A7 /* SettingsPresenter.swift in Sources */,
 			);

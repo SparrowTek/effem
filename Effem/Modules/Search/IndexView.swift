@@ -57,6 +57,7 @@ struct IndexView: View {
         }
     }
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(IndexState.self) private var state: IndexState
     @State private var query = ""
     @State private var scope: Int = Scope.all.rawValue
@@ -86,8 +87,11 @@ struct IndexView: View {
             ToolbarItem(placement: .topBarLeading) {
                 Button("", systemImage: "questionmark.circle", action: displayPodcastIndexInfo)
             }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Done", action: { dismiss() })
+            }
         }
-        .navBar()
         .navigationTitle("Search")
         .task { await getRecentPodcasts() }
         .task($performSearchTrigger) { await performSearch() }

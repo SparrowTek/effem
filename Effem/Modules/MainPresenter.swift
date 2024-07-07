@@ -1,5 +1,5 @@
 //
-//  LibraryView.swift
+//  MainPresenter.swift
 //  Effem
 //
 //  Created by Thomas Rademaker on 5/19/23.
@@ -10,12 +10,34 @@ import SwiftData
 import NukeUI
 
 @MainActor
-struct LibraryPresenter: View {
-    @Environment(LibraryState.self) private var state: LibraryState
+struct MainPresenter: View {
+    @Environment(AppState.self) private var state
     
     var body: some View {
+        @Bindable var state = state
+        
         NavigationStack {
             LibraryView()
+                .playbackBar()
+                .setTheme()
+                .sheet(item: $state.sheet) {
+                    switch $0 {
+                    case .nowPlaying:
+                        NowPlayingView()
+                            .setTheme()
+                    case .settings:
+                        SettingsPresenter()
+                            .environment(state.settingsState)
+                            .setTheme()
+                    case .downloads:
+                        Text("DOWNLOADS")
+                            .presentationDragIndicator(.visible)
+                    case .search:
+                        IndexPresenter()
+                            .environment(state.indexState)
+                            .setTheme()
+                    }
+                }
         }
     }
 }
@@ -162,9 +184,8 @@ fileprivate struct LibraryEpisodeCell: View {
 }
 
 #Preview {
-    LibraryPresenter()
+    MainPresenter()
         .environment(AppState())
-        .environment(LibraryState(parentState: .init()))
         .environment(MediaPlaybackManager.shared)
         #if DEBUG
         .modelContainer(previewContainer)

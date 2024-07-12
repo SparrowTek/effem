@@ -22,16 +22,17 @@ struct PodcastIndexInfoView: View {
                 .font(.title2)
                 .padding()
             
-            if let stats, let countTotal = stats.feedCountTotal {
-                Text("\(countTotal)")
+            ZStack {
+                Text("\(stats?.feedCountTotal ?? 0)")
                     .font(.largeTitle)
                     .foregroundStyle(.podcastIndexRed)
                     .padding(.horizontal)
-            } else {
+                    .opacity(stats != nil ? 1 : 0)
                 ProgressView()
                     .progressViewStyle(.circular)
                     .tint(.podcastIndexRed)
                     .padding(.horizontal)
+                    .opacity(stats == nil ? 1 : 0)
             }
         }
         .task { await getStats() }

@@ -5,7 +5,7 @@
 //  Created by Thomas Rademaker on 5/19/23.
 //
 
-import Foundation
+@preconcurrency import Foundation
 import PodcastIndexKit
 import SwiftData
 import AVKit

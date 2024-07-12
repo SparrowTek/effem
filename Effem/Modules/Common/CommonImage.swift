@@ -21,9 +21,8 @@ struct CommonImage: View {
         switch image {
         case .url(let imageURL, let symbol):
             AsyncImage(url: URL(string: imageURL ?? ""), content: {
-                $0
-                    .resizable()
-                    .scaledToFill()
+                $0.resizable()
+                    .scaledToFit()
             }, placeholder: {
                 CommonSystemImage(systemName: symbol)
             })
@@ -81,7 +80,7 @@ fileprivate struct CommonSystemImage: View {
     ZStack {
         Color.black
         CommonImage(image: .url(url: "", sfSymbol: "person"))
-            .frame(width: 30)
-            .clipShape(Circle())
+//            .frame(width: 30)
+//            .clipShape(Circle())
     }
 }

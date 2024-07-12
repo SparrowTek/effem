@@ -160,7 +160,6 @@ fileprivate struct SearchListCell: View {
             VStack {
                 CommonImage(image: .url(url: podcast.artwork, sfSymbol: "photo"))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .scaledToFit()
                     .frame(maxWidth: .infinity)
                     .frame(height: 150)
                 

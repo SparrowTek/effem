@@ -44,9 +44,9 @@ class MediaPlaybackManager {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .duckOthers, .allowAirPlay, .allowBluetooth, .allowBluetoothA2DP])
         setupRemoteControlHandlers()
         
-#if DEBUG
-        loadTestData()
-#endif
+//#if DEBUG
+//        loadTestData()
+//#endif
     }
     
     deinit {
@@ -60,24 +60,30 @@ class MediaPlaybackManager {
         }
     }
     
-    private func loadTestData() {
-        Task {
-            do {
-                let episodeResponse = try await EpisodesService().episodes(byFeedID: "41504")
-                
-                if episodeResponse.items?.count ?? 0 > 0 {
-                    let episode = episodeResponse.items?[0]
-                    self.episode = episode
-                    
-                    let podcastResponse = try await PodcastsService().podcast(byFeedId: episode?.feedId ?? 0)
-                    podcast = podcastResponse.feed
-                    print("EPISODE: \(String(describing: episode))")
-                }
-            } catch {
-                print("PODCAST ERROR: \(error)")
-            }
-        }
-    }
+//    private func loadTestData() {
+//        Task {
+//            guard let infoDictionary = Bundle.main.infoDictionary,
+//                  let apiKey = infoDictionary["PodcastIndexAPIKey"] as? String,
+//                  let apiSecret = infoDictionary["PodcastIndexAPISecret"] as? String,
+//                  let userAgent = infoDictionary["PodcastIndexUserAgent"] as? String else { fatalError("PodcastIndexKit API key, API secret, and User Agent are not properly set in your User.xcconfig file") }
+//            await PodcastIndexKit.setup(apiKey: apiKey, apiSecret: apiSecret, userAgent: userAgent)
+//            
+//            do {
+//                let episodeResponse = try await EpisodesService().episodes(byFeedID: "41504")
+//                
+//                if episodeResponse.items?.count ?? 0 > 0 {
+//                    let episode = episodeResponse.items?[0]
+//                    self.episode = episode
+//                    
+//                    let podcastResponse = try await PodcastsService().podcast(byFeedId: episode?.feedId ?? 0)
+//                    podcast = podcastResponse.feed
+//                    print("EPISODE: \(String(describing: episode))")
+//                }
+//            } catch {
+//                print("PODCAST ERROR 1: \(error)")
+//            }
+//        }
+//    }
     
     func setEpisode(_ episode: Episode?) {
         self.episode = episode

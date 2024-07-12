@@ -54,9 +54,9 @@ struct AppPresenter: View {
 
 #Preview {
     AppPresenter()
+        .setupPodcastIndexKit()
         .environment(AppState())
         .environment(MediaPlaybackManager.shared)
-        .environment(PodcastIndexKit())
     #if DEBUG
         .modelContainer(previewContainer)
     #endif

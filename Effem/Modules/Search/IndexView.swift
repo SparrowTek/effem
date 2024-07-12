@@ -179,6 +179,7 @@ fileprivate struct SearchListCell: View {
 #Preview {
     NavigationStack {
         IndexPresenter()
+            .setupPodcastIndexKit()
             .environment(IndexState(parentState: .init()))
             .environment(MediaPlaybackManager.shared)
             .environment(AppState())

@@ -60,4 +60,5 @@ struct PodcastIndexInfoView: View {
                     .environment(PodcastIndexKit())
             }
     }
+    .setupPodcastIndexKit()
 }

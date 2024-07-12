@@ -184,6 +184,7 @@ fileprivate struct LibraryEpisodeCell: View {
 
 #Preview {
     MainPresenter()
+        .setupPodcastIndexKit()
         .environment(AppState())
         .environment(MediaPlaybackManager.shared)
         #if DEBUG

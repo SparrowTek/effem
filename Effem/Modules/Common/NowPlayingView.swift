@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import NukeUI
 
 @MainActor
 struct NowPlayingView: View {
@@ -107,27 +106,14 @@ fileprivate struct EpisodeArtworkView: View {
     @State private var height: CGFloat?
     
     var body: some View {
-        LazyImage(url: URL(string: mediaPlaybackManager.episode?.image ?? "")) { state in
-            if let image = state.image {
-                image
-                    .resizable()
-                    .scaledToFill()
-            } else {
-                ZStack {
-                    Rectangle()
-                        .fill(.gray)
-                        .overlay(Material.ultraThin)
-                    ProgressView()
-                }
-            }
-        }
-        .cornerRadius(20)
-        .frame(maxWidth: .infinity)
-        .background(GeometryReader { Color.clear.preference(key: WidthKey.self, value: $0.size.width) })
-        .padding(.horizontal, 40)
-        .onPreferenceChange(WidthKey.self) { height = $0 }
-        .frame(height: height)
-        .shadow(radius: 20)
+        CommonImage(image: .url(url: mediaPlaybackManager.episode?.image, sfSymbol: nil))
+            .cornerRadius(20)
+            .frame(maxWidth: .infinity)
+            .background(GeometryReader { Color.clear.preference(key: WidthKey.self, value: $0.size.width) })
+            .padding(.horizontal, 40)
+            .onPreferenceChange(WidthKey.self) { height = $0 }
+            .frame(height: height)
+            .shadow(radius: 20)
     }
 }
 

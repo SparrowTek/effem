@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import NukeUI
 
 @MainActor
 struct PlaybackBar: ViewModifier {
@@ -34,22 +33,9 @@ fileprivate struct PlaybackBarView: View {
     
     var body: some View {
         HStack {
-            LazyImage(url: URL(string: mediaPlaybackManager.episode?.image ?? "")) { state in
-                if let image = state.image {
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } else {
-                    ZStack {
-                        Rectangle()
-                            .fill(.gray)
-                            .overlay(Material.ultraThin)
-                        ProgressView()
-                    }
-                }
-            }
-            .frame(width: 50, height: 50)
-            .cornerRadius(4)
+            CommonImage(image: .url(url: mediaPlaybackManager.episode?.image, sfSymbol: nil))
+                .frame(width: 50, height: 50)
+                .cornerRadius(4)
             
             VStack(alignment: .leading) {
                 Text(mediaPlaybackManager.episode?.title ?? "")

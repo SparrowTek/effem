@@ -6,34 +6,27 @@
 //
 
 import SwiftUI
-import NukeUI
 
 enum ImageType {
-    case url(url: String?, sfSymbol: String)
+    case url(url: String?, sfSymbol: String?)
     case asset(Image)
-    case diskURL(path: URL, sfSymbol: String)
-    case data(Data?, sfSymbol: String)
+    case diskURL(path: URL, sfSymbol: String?)
+    case data(Data?, sfSymbol: String?)
 }
 
-@MainActor
 struct CommonImage: View {
     let image: ImageType
     
     var body: some View {
         switch image {
         case .url(let imageURL, let symbol):
-            if let imageURL {
-                LazyImage(url: URL(string: imageURL)) { state in
-                    if let image = state.image {
-                        image
-                            .resizable()
-                    } else {
-                        CommonSystemImage(systemName: symbol)
-                    }
-                }
-            } else {
+            AsyncImage(url: URL(string: imageURL ?? ""), content: {
+                $0
+                    .resizable()
+                    .scaledToFill()
+            }, placeholder: {
                 CommonSystemImage(systemName: symbol)
-            }
+            })
         case .asset(let image):
             image
                 .resizable()
@@ -56,20 +49,31 @@ struct CommonImage: View {
     }
 }
 
-@MainActor
 fileprivate struct CommonSystemImage: View {
-    var systemName: String
+    var systemName: String?
     
     var body: some View {
-        Text(" ")
-            .frame(maxWidth: .infinity)
-            .frame(maxHeight: .infinity)
-            .background(.primaryBackground)
-            .overlay(
-                Image(systemName: systemName)
-                    .resizable()
-                    .scaledToFit()
-            )
+        if let systemName {
+            Text(" ")
+                .frame(maxWidth: .infinity)
+                .frame(maxHeight: .infinity)
+                .background(.white)
+                .overlay(
+                    Image(systemName: systemName)
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                        .bold()
+                        .tint(.black)
+                )
+        } else {
+            ZStack {
+                Rectangle()
+                    .fill(.gray)
+                    .overlay(Material.ultraThin)
+                ProgressView()
+            }
+        }
     }
 }
 

@@ -1,15 +1,6 @@
 {
-  "originHash" : "86b183ec59e6eec45866f9ec2d47327221938e64aea5905e491a0c725cef6548",
+  "originHash" : "e984d0c51a0528c8db7aad29631a3a61349bdf644d66fc49fb8be4fc5a1082ab",
   "pins" : [
-    {
-      "identity" : "nuke",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Nuke.git",
-      "state" : {
-        "revision" : "1694798e876113d44f6ec6ead965d7286695981d",
-        "version" : "12.2.0"
-      }
-    },
     {
       "identity" : "podcastindexkit",
       "kind" : "remoteSourceControl",

@@ -35,10 +35,6 @@
 		6C726B2F2A180C9000C76C48 /* IndexState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B2E2A180C9000C76C48 /* IndexState.swift */; };
 		6C726B372A18154300C76C48 /* PlaybackBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B362A18154300C76C48 /* PlaybackBar.swift */; };
 		6C726B392A181B7F00C76C48 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C726B382A181B7F00C76C48 /* NavBar.swift */; };
-		6C8B242F2B163F48005E3BE3 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B242E2B163F48005E3BE3 /* Nuke */; };
-		6C8B24312B163F48005E3BE3 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24302B163F48005E3BE3 /* NukeExtensions */; };
-		6C8B24332B163F48005E3BE3 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24322B163F48005E3BE3 /* NukeUI */; };
-		6C8B24352B163F48005E3BE3 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 6C8B24342B163F48005E3BE3 /* NukeVideo */; };
 		6C8EF8D62B1117A500F2C6A7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D52B1117A500F2C6A7 /* SettingsPresenter.swift */; };
 		6C8EF8D92B11187900F2C6A7 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8D82B11187900F2C6A7 /* SettingsState.swift */; };
 		6C8EF8DB2B11352F00F2C6A7 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8EF8DA2B11352F00F2C6A7 /* Build.swift */; };
@@ -114,11 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C8B24332B163F48005E3BE3 /* NukeUI in Frameworks */,
-				6C8B24352B163F48005E3BE3 /* NukeVideo in Frameworks */,
-				6C8B242F2B163F48005E3BE3 /* Nuke in Frameworks */,
 				6C56B56E2C3AE3C600E9565F /* PodcastIndexKit in Frameworks */,
-				6C8B24312B163F48005E3BE3 /* NukeExtensions in Frameworks */,
 				6C2B6A252B9C8CF900CDFDA6 /* PodcastIndexKit in Frameworks */,
 				6C56B56B2C3AE37500E9565F /* PodcastIndexKit in Frameworks */,
 				6CE2A3A32AF33366003C82C3 /* PodcastIndexKit in Frameworks */,
@@ -321,10 +313,6 @@
 			packageProductDependencies = (
 				6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */,
 				6CE2A3A22AF33366003C82C3 /* PodcastIndexKit */,
-				6C8B242E2B163F48005E3BE3 /* Nuke */,
-				6C8B24302B163F48005E3BE3 /* NukeExtensions */,
-				6C8B24322B163F48005E3BE3 /* NukeUI */,
-				6C8B24342B163F48005E3BE3 /* NukeVideo */,
 				6C2B6A242B9C8CF900CDFDA6 /* PodcastIndexKit */,
 				6C56B56A2C3AE37500E9565F /* PodcastIndexKit */,
 				6C56B56D2C3AE3C600E9565F /* PodcastIndexKit */,
@@ -359,7 +347,6 @@
 			);
 			mainGroup = 6C15D23F2A095221001CBAAD;
 			packageReferences = (
-				6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */,
 				6C56B56F2C3AE74600E9565F /* XCRemoteSwiftPackageReference "PodcastIndexKit" */,
 			);
 			productRefGroup = 6C15D2492A095221001CBAAD /* Products */;
@@ -667,14 +654,6 @@
 				kind = branch;
 			};
 		};
-		6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.2.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,26 +673,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6C56B56F2C3AE74600E9565F /* XCRemoteSwiftPackageReference "PodcastIndexKit" */;
 			productName = PodcastIndexKit;
-		};
-		6C8B242E2B163F48005E3BE3 /* Nuke */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
-		};
-		6C8B24302B163F48005E3BE3 /* NukeExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeExtensions;
-		};
-		6C8B24322B163F48005E3BE3 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeUI;
-		};
-		6C8B24342B163F48005E3BE3 /* NukeVideo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C8B242D2B163F48005E3BE3 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = NukeVideo;
 		};
 		6CE2A39F2AF2FB8D003C82C3 /* PodcastIndexKit */ = {
 			isa = XCSwiftPackageProductDependency;

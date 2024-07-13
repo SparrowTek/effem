@@ -22,58 +22,40 @@ struct NowPlayingView: View {
 @MainActor
 fileprivate struct PlaybackControlsView: View {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
-    @State private var goBackTrigger = PlainTaskTrigger()
-    @State private var playPauseTrigger = PlainTaskTrigger()
-    @State private var skipAheadTrigger = PlainTaskTrigger()
     
     var body: some View {
         VStack {
             AudioProgressView()
             
             HStack {
-                Button(action: triggerGoBack) {
+                Button(action: goBack) {
                     Image(systemName: "gobackward.15")
                 }
                 .padding(.trailing)
                 
-                Button(action: triggerPlayPause) {
+                Button(action: playPause) {
                     Image(systemName: mediaPlaybackManager.isPlaying ? "pause.fill" : "play.fill")
                 }
                 .padding(.horizontal)
                 
-                Button(action: triggerSkipAhead) {
+                Button(action: skipAhead) {
                     Image(systemName: "goforward.30")
                 }
                 .padding(.leading)
             }
             .font(.title)
-            .task($goBackTrigger) { await goBack() }
-            .task($playPauseTrigger) { await playPause() }
-            .task($skipAheadTrigger) { await skipAhead() }
         }
     }
     
-    private func triggerPlayPause() {
-        playPauseTrigger.trigger()
-    }
-    
-    private func playPause() async {
+    private func playPause() {
         mediaPlaybackManager.playPause()
     }
     
-    private func triggerSkipAhead() {
-        skipAheadTrigger.trigger()
-    }
-    
-    private func skipAhead() async {
+    private func skipAhead() {
         mediaPlaybackManager.skipAhead30()
     }
     
-    private func triggerGoBack() {
-        goBackTrigger.trigger()
-    }
-    
-    private func goBack() async {
+    private func goBack() {
         mediaPlaybackManager.goBack15()
     }
 }

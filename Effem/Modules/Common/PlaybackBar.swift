@@ -27,9 +27,6 @@ struct PlaybackBar: ViewModifier {
 fileprivate struct PlaybackBarView: View {
     @Environment(AppState.self) private var state
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
-    @State private var goBackTrigger = PlainTaskTrigger()
-    @State private var playPauseTrigger = PlainTaskTrigger()
-    @State private var skipAheadTrigger = PlainTaskTrigger()
     
     var body: some View {
         HStack {
@@ -45,50 +42,35 @@ fileprivate struct PlaybackBarView: View {
             }
 
             Spacer()
-            Button(action: triggerGoBack) {
+            Button(action: goBack) {
                 Image(systemName: "gobackward.15")
             }
             
-            Button(action: triggerPlayPause) {
+            Button(action: playPause) {
                 Image(systemName: mediaPlaybackManager.isPlaying ? "pause.fill" : "play.fill")
             }
             
-            Button(action: triggerSkipAhead) {
+            Button(action: skipAhead) {
                 Image(systemName: "goforward.30")
             }
         }
         .contentShape(Rectangle())
         .onTapGesture { showNowPlayingSheet() }
-        .task($goBackTrigger) { await goBack() }
-        .task($playPauseTrigger) { await playPause() }
-        .task($skipAheadTrigger) { await skipAhead() }
     }
     
     private func showNowPlayingSheet() {
         state.openNowPlaying()
     }
     
-    private func triggerPlayPause() {
-        playPauseTrigger.trigger()
-    }
-    
-    private func playPause() async {
+    private func playPause() {
         mediaPlaybackManager.playPause()
     }
     
-    private func triggerSkipAhead() {
-        skipAheadTrigger.trigger()
-    }
-    
-    private func skipAhead() async {
+    private func skipAhead() {
         mediaPlaybackManager.skipAhead30()
     }
     
-    private func triggerGoBack() {
-        goBackTrigger.trigger()
-    }
-    
-    private func goBack() async {
+    private func goBack() {
         mediaPlaybackManager.goBack15()
     }
 }

@@ -62,11 +62,9 @@ struct UnsubscribedPodcastView: View {
                 .setForegroundStyle()
                 .padding(.horizontal)
             
-            List {
-                Text("EPISODE 1")
-                Text("EPISODE 2")
-            }
-            .listStyle(.plain)
+            Divider()
+            
+            EpisodesScrollView(podcastGUID: podcast.podcastGuid)
         }
         .navigationTitle("new podcast")
         .navigationBarTitleDisplayMode(.inline)
@@ -84,6 +82,9 @@ struct UnsubscribedPodcastView: View {
         if isSubscribed {
             if let subscribedPodcast = try? podcasts.filter(#Predicate { $0.podcastGuid == podcast.podcastGuid }).first {
                 modelContext.delete(subscribedPodcast)
+            } else {
+                // TODO: handle error
+                subscribeInProgress = false
             }
         } else {
             let fmPodcast = FMPodcast(podcast: podcast)
@@ -95,10 +96,51 @@ struct UnsubscribedPodcastView: View {
     }
 }
 
+@MainActor
+fileprivate struct EpisodesScrollView: View {
+    var podcastGUID: String?
+    @State private var episodes: [Episode] = []
+    
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                if episodes.isEmpty {
+                    ProgressView()
+                } else {
+                    ForEach(episodes) {
+                        EpisodeCell(episode: $0)
+                    }
+                }
+            }
+        }
+        .task { await getEpisodes() }
+    }
+    
+    private func getEpisodes() async {
+        guard let episodes = try? await EpisodesService().episodes(byPodcastGUID: podcastGUID ?? "").items else { return }
+        self.episodes = episodes
+    }
+}
+
+@MainActor
+fileprivate struct EpisodeCell: View {
+    var episode: Episode
+    
+    var body: some View {
+        HStack {
+            Text(episode.title ?? "")
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.leading)
+    }
+}
+
 #if DEBUG
 #Preview {
     NavigationStack {
         UnsubscribedPodcastView(podcast: Podcast.preview)
+            .setupPodcastIndexKit()
             .modelContainer(previewContainer)
     }
 }

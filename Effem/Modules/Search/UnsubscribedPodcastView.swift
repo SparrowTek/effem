@@ -13,6 +13,7 @@ import PodcastIndexKit
 struct UnsubscribedPodcastView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var subscribeInProgress = false
+    @State private var subscribeTrigger = PlainTaskTrigger()
     @Query private var podcasts: [FMPodcast]
     
     let podcast: Podcast
@@ -38,7 +39,7 @@ struct UnsubscribedPodcastView: View {
                         .multilineTextAlignment(.leading)
                         .setForegroundStyle()
                     
-                    Button(action: subscribe) {
+                    Button(action: triggerSubscibe) {
                         Group {
                             if subscribeInProgress {
                                 ProgressView()
@@ -70,9 +71,14 @@ struct UnsubscribedPodcastView: View {
         .navigationTitle("new podcast")
         .navigationBarTitleDisplayMode(.inline)
         .commonView()
+        .task($subscribeTrigger) { await subscribe() }
     }
     
-    private func subscribe() {
+    private func triggerSubscibe() {
+        subscribeTrigger.trigger()
+    }
+    
+    private func subscribe() async {
         subscribeInProgress = true
         
         if isSubscribed {
@@ -84,6 +90,7 @@ struct UnsubscribedPodcastView: View {
             modelContext.insert(fmPodcast)
         }
         
+        try? await Task.sleep(nanoseconds: 500_000_000)
         subscribeInProgress = false
     }
 }

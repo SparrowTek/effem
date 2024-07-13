@@ -124,15 +124,38 @@ fileprivate struct EpisodesScrollView: View {
 
 @MainActor
 fileprivate struct EpisodeCell: View {
+    @Environment(\.modelContext) private var modelContext
+    @State private var downloadTrigger = PlainTaskTrigger()
     var episode: Episode
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Text(episode.title ?? "")
             Spacer()
+            
+            Button("", systemImage: "play.circle", action: play)
+                .imageScale(.large)
+            Button("", systemImage: "arrow.down.circle", action: triggerDownload)
+                .imageScale(.large)
         }
         .frame(maxWidth: .infinity)
-        .padding(.leading)
+        .padding(.horizontal)
+        .task($downloadTrigger) { await download() }
+    }
+    
+    private func play() {
+        
+    }
+    
+    private func triggerDownload() {
+        downloadTrigger.trigger()
+    }
+    
+    private func download() async {
+        guard let guid = episode.guid else { return }
+        guard let episode = try? await EpisodesService().episodes(byGUID: guid).episode else { return }
+        let fmEpisode = FMEpisode(episode: episode)
+        modelContext.insert(fmEpisode)
     }
 }
 

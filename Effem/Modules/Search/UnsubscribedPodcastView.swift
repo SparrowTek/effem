@@ -144,6 +144,7 @@ fileprivate struct EpisodeCell: View {
     }
     
     private func play() {
+        #warning("play can only work and be displayed as an option if the episode is already downloaded")
         
     }
     
@@ -152,10 +153,18 @@ fileprivate struct EpisodeCell: View {
     }
     
     private func download() async {
-        guard let guid = episode.guid else { return }
-        guard let episode = try? await EpisodesService().episodes(byGUID: guid).episode else { return }
-        let fmEpisode = FMEpisode(episode: episode)
-        modelContext.insert(fmEpisode)
+        do {
+            guard let guid = episode.guid else { return }
+            guard let episode = try? await EpisodesService().episodes(byGUID: guid).episode else { return }
+            let fmEpisode = FMEpisode(episode: episode)
+            modelContext.insert(fmEpisode)
+            let data = try await DownloadService().downloadEpisode(from: episode.enclosureUrl)
+            fmEpisode.audioFile = data
+            try modelContext.save()
+        } catch {
+            // TODO: handle catch
+            print("DOWNLOAD ERROR: \(error)")
+        }
     }
 }
 

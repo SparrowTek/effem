@@ -21,6 +21,7 @@ class FMEpisode {
     let episode: Episode
     let podcast: Podcast?
     var playPosition: Double
+    @Attribute(.externalStorage) var audioFile: Data?
     
     init(episode: Episode, playPosition: Double = 0) {
         self.episode = episode

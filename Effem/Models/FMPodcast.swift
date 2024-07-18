@@ -19,7 +19,7 @@ import PodcastIndexKit
 @Model
 class FMPodcast {
     let id: Int?
-    let title: String?
+    @Attribute(.spotlight) let title: String?
     let url: String?
     let originalUrl: String?
     let link: String?

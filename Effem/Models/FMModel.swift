@@ -29,7 +29,10 @@ struct EffemDataContainerViewModifier: ViewModifier {
     
     init(inMemory: Bool) {
         do {
-            container = try ModelContainer(for: FMPodcast.self, FMEpisode.self, configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
+            container = try ModelContainer(for: FMPodcast.self,
+                                           FMEpisode.self,
+                                           FMCategory.self,
+                                           configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
         } catch {
             fatalError("Failed to create ModelContainer")
         }

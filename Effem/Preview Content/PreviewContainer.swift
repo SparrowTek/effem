@@ -18,26 +18,23 @@ public let previewContainer: ModelContainer = {
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        if let podcastResponse: PodcastResponse = object(resourceName: "podcastresponse"),
+           let podcast = podcastResponse.feed {
+            container.mainContext.insert(FMPodcast(podcast: podcast))
+        }
         
-        if let podcastFile = Bundle.main.url(forResource: "podcastresponse", withExtension: "json") {
-            let data = try Data(contentsOf: podcastFile)
-            let podcastResponse = try decoder.decode(PodcastResponse.self, from: data)
-            
-            if let podcast = podcastResponse.feed {
-                container.mainContext.insert(FMPodcast(podcast: podcast))
+        if let episodes: EpisodeArrayResponse = object(resourceName: "episodeArrayResponse"),
+           let episodes = episodes.items {
+            for episode in episodes {
+                container.mainContext.insert(FMEpisode(episode: episode))
             }
         }
         
-        if let episodesFile = Bundle.main.url(forResource: "episodeArrayResponse", withExtension: "json") {
-            let data = try Data(contentsOf: episodesFile)
-            let episodes = try decoder.decode(EpisodeArrayResponse.self, from: data)
-            
-            if let episodes = episodes.items {
-                for episode in episodes {
-                    container.mainContext.insert(FMEpisode(episode: episode))
-                }
+        if let categories: CategoriesResponse = object(resourceName: "categories"), let feeds = categories.feeds {
+            for category in feeds {
+                guard let id = category.id, let name = category.name else { continue }
+                let fmCategory = FMCategory(id: id, name: name)
+                container.mainContext.insert(fmCategory)
             }
         }
         
@@ -48,4 +45,13 @@ public let previewContainer: ModelContainer = {
         fatalError("Failed to create container")
     }
 }()
+
+fileprivate func object<c: Codable>(resourceName: String) -> c? {
+    guard let file = Bundle.main.url(forResource: resourceName, withExtension: "json"),
+          let data = try? Data(contentsOf: file) else { return nil }
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    return try? decoder.decode(c.self, from: data)
+}
+
 #endif

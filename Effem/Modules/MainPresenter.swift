@@ -41,20 +41,20 @@ struct MainPresenter: View {
 }
 
 struct LibraryView: View {
-    private var tabs: [UnderlinedTab] = [
+    @State private var underlineTabState = UnderlinedTabState(tabs: [
         .init(id: 0, title: "episodes"),
-        .init(id: 1, title: "shows"),
-    ]
+        .init(id: 1, title: "shows")])
     
     var body: some View {
         VStack {
-            UnderlinedTabView(tabs: tabs, tabViewStyle: .automatic) {
-                LibraryEpisodesView()
+            UnderlinedTabView(tabViewStyle: .automatic) {
+                LibraryEpisodesView(underlineTabState: underlineTabState)
                     .tag(0)
                 
                 LibraryShowsView()
                     .tag(1)
             }
+            .environment(underlineTabState)
         }
         .navBar()
         .commonView()
@@ -64,16 +64,31 @@ struct LibraryView: View {
 fileprivate struct LibraryEpisodesView: View {
     @Query private var episodes: [FMEpisode]
     @Environment(\.modelContext) private var modelContext
+    @Bindable var underlineTabState: UnderlinedTabState
     
     var body: some View {
-        List {
-            ForEach(episodes) {
-                LibraryEpisodeCell(episode: $0)
+        ZStack {
+            if episodes.isEmpty {
+                VStack {
+                    ContentUnavailableView("no episodes available", systemImage: "waveform.slash", description: Text("add episodes from you podcast list"))
+                    Button("add episodes", action: addEpisodes)
+                        .buttonStyle(.borderedProminent)
+                }
+            } else {
+                List {
+                    ForEach(episodes) {
+                        LibraryEpisodeCell(episode: $0)
+                    }
+                    .onDelete(perform: deleteEpisode)
+                }
+                .listStyle(.plain)
             }
-            .onDelete(perform: deleteEpisode)
         }
-        .listStyle(.plain)
         .commonView()
+    }
+    
+    private func addEpisodes() {
+        underlineTabState.selectedTabIndex = 1
     }
     
     private func deleteEpisode(_ indexSet: IndexSet) {
@@ -84,6 +99,7 @@ fileprivate struct LibraryEpisodesView: View {
 }
 
 fileprivate struct LibraryShowsView: View {
+    @Environment(AppState.self) private var state
     @Query private var podcasts: [FMPodcast]
     
     private let columns = [
@@ -93,16 +109,30 @@ fileprivate struct LibraryShowsView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 0) {
-                ForEach(podcasts) {
-                    LibraryShowCell(podcast: $0)
+        ZStack {
+            if podcasts.isEmpty {
+                VStack {
+                    ContentUnavailableView("no podcasts available", systemImage: "waveform.slash", description: Text("search for podcasts to add to your library"))
+                    Button("search for podcasts", action: searchForPodcasts)
+                        .buttonStyle(.borderedProminent)
                 }
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 0) {
+                        ForEach(podcasts) {
+                            LibraryShowCell(podcast: $0)
+                        }
+                    }
+                    .setForegroundStyle()
+                }
+                .scrollIndicators(.hidden)
             }
-            .setForegroundStyle()
         }
-        .scrollIndicators(.hidden)
         .commonView()
+    }
+    
+    private func searchForPodcasts() {
+        state.sheet = .search
     }
 }
 

@@ -19,6 +19,12 @@
     "About" : {
 
     },
+    "add episodes" : {
+
+    },
+    "add episodes from you podcast list" : {
+
+    },
     "all" : {
 
     },
@@ -61,6 +67,12 @@
     "new podcast" : {
 
     },
+    "no episodes available" : {
+
+    },
+    "no podcasts available" : {
+
+    },
     "person" : {
 
     },
@@ -80,6 +92,12 @@
 
     },
     "Search" : {
+
+    },
+    "search for podcasts" : {
+
+    },
+    "search for podcasts to add to your library" : {
 
     },
     "selected color scheme" : {

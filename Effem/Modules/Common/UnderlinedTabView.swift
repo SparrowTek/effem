@@ -38,6 +38,8 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
             
             TabView(selection: $state.tabIndex) {
                 content
+                    .animation(nil, value: state.tabIndex)
+                    .animation(nil, value: state.selectedTabIndex)
             }
             .tabViewStyle(tabViewStyle)
             .onChange(of: state.tabIndex) { withAnimation { state.selectedTabIndex = state.tabIndex } }

@@ -88,7 +88,7 @@ fileprivate struct LibraryEpisodesView: View {
     }
     
     private func addEpisodes() {
-        underlineTabState.selectedTabIndex = 1
+        withAnimation { underlineTabState.selectedTabIndex = 1 }
     }
     
     private func deleteEpisode(_ indexSet: IndexSet) {

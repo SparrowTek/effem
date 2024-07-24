@@ -80,19 +80,8 @@ extension View {
 }
 
 #Preview {
-    TabView {
-        Group {
-            Text("")
-                .tabItem { Label("library", systemImage: "square.stack.fill")}
-            
-            Text("")
-                .tabItem { Label("search", systemImage: "magnifyingglass")}
-            
-        }
-        .playbackBar()
-        .environment(MediaPlaybackManager.shared)
-        .environment(AppState())
-//        .toolbarBackground(.visible, for: .tabBar)
-//        .toolbarBackground(Color.primaryWhite, for: .tabBar)
-    }
+    Color.red
+    .playbackBar()
+    .environment(MediaPlaybackManager.shared)
+    .environment(AppState())
 }

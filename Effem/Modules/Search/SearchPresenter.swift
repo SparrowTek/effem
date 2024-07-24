@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import PodcastIndexKit
 
 struct SearchPresenter: View {
@@ -31,6 +32,45 @@ struct SearchPresenter: View {
     }
 }
 
+fileprivate struct SearchView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(SearchState.self) private var state: SearchState
+    @Query private var categories: [FMCategory]
+    @State private var query = ""
+    
+    var body: some View {
+        ZStack {
+            if categories.isEmpty {
+                ContentUnavailableView("category list unavailable", systemImage: "list.bullet.clipboard", description: Text("please search for a podcast by name"))
+            } else {
+                List {
+                    ForEach(categories) {
+                        Text($0.name)
+                    }
+                }
+            }
+        }
+        .commonView()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("", systemImage: "questionmark.circle", action: displayPodcastIndexInfo)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("done", action: { dismiss() })
+            }
+        }
+        .navigationTitle("search")
+        .searchable(text: $query, prompt: "shows, episidoes, and more")
+    }
+    
+    private func displayPodcastIndexInfo() {
+        state.sheet = .podcastIndexInfo
+    }
+}
+
+// THIS WILL BECOME SOME OTHER VIEW
+/*
 struct SearchView: View {
     private let columns = [
         GridItem(.flexible(), spacing: 8),
@@ -172,6 +212,7 @@ fileprivate struct SearchListCell: View {
         state.path.append(podcast)
     }
 }
+*/
 
 #Preview {
     NavigationStack {
@@ -181,5 +222,8 @@ fileprivate struct SearchListCell: View {
             .environment(MediaPlaybackManager.shared)
             .environment(AppState())
             .environment(PodcastIndexKit())
+            #if DEBUG
+            .modelContainer(previewContainer)
+            #endif
     }
 }

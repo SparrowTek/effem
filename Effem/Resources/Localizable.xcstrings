@@ -25,9 +25,6 @@
     "add episodes from you podcast list" : {
 
     },
-    "all" : {
-
-    },
     "allow downloading" : {
 
     },
@@ -37,10 +34,10 @@
     "color scheme" : {
 
     },
-    "Common view" : {
+    "dark" : {
 
     },
-    "dark" : {
+    "done" : {
 
     },
     "Done" : {
@@ -76,7 +73,7 @@
     "no podcasts available" : {
 
     },
-    "person" : {
+    "NOPE" : {
 
     },
     "Podcast Index Info" : {
@@ -94,7 +91,7 @@
     "Privacy policy" : {
 
     },
-    "Search" : {
+    "search" : {
 
     },
     "search for podcasts" : {
@@ -112,9 +109,6 @@
     "shows" : {
 
     },
-    "shows, episidoes, and more" : {
-
-    },
     "storage" : {
 
     },
@@ -125,12 +119,6 @@
 
     },
     "system" : {
-
-    },
-    "term" : {
-
-    },
-    "title" : {
 
     },
     "TODO: GET AUTHOR" : {

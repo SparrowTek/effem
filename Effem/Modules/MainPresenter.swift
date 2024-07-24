@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-@MainActor
 struct MainPresenter: View {
     @Environment(AppState.self) private var state
     
@@ -41,7 +40,6 @@ struct MainPresenter: View {
     }
 }
 
-@MainActor
 struct LibraryView: View {
     private var tabs: [UnderlinedTab] = [
         .init(id: 0, title: "episodes"),
@@ -63,7 +61,6 @@ struct LibraryView: View {
     }
 }
 
-@MainActor
 fileprivate struct LibraryEpisodesView: View {
     @Query private var episodes: [FMEpisode]
     @Environment(\.modelContext) private var modelContext
@@ -86,7 +83,6 @@ fileprivate struct LibraryEpisodesView: View {
     }
 }
 
-@MainActor
 fileprivate struct LibraryShowsView: View {
     @Query private var podcasts: [FMPodcast]
     
@@ -110,7 +106,6 @@ fileprivate struct LibraryShowsView: View {
     }
 }
 
-@MainActor
 fileprivate struct LibraryShowCell: View {
     var podcast: FMPodcast
     
@@ -144,7 +139,6 @@ fileprivate struct LibraryShowCell: View {
     }
 }
 
-@MainActor
 fileprivate struct LibraryEpisodeCell: View {
     var episode: FMEpisode
     

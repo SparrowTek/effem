@@ -8,7 +8,6 @@
 import SwiftUI
 import PodcastIndexKit
 
-@MainActor
 fileprivate struct SyncAppLoad: ViewModifier {
     @Environment(\.modelContext) private var modelContext
     

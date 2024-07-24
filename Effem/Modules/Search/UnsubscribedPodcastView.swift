@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
-@MainActor
 struct UnsubscribedPodcastView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var subscribeInProgress = false
@@ -96,7 +95,6 @@ struct UnsubscribedPodcastView: View {
     }
 }
 
-@MainActor
 fileprivate struct EpisodesScrollView: View {
     var podcastGUID: String?
     @State private var episodes: [Episode] = []
@@ -122,7 +120,6 @@ fileprivate struct EpisodesScrollView: View {
     }
 }
 
-@MainActor
 fileprivate struct EpisodeCell: View {
     @Environment(\.modelContext) private var modelContext
     @State private var downloadTrigger = PlainTaskTrigger()

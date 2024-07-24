@@ -8,7 +8,6 @@
 import SwiftUI
 
 #warning("this modifier should probably be deprecated")
-@MainActor
 fileprivate struct NavBar: ViewModifier {
     @Environment(AppState.self) private var state
     

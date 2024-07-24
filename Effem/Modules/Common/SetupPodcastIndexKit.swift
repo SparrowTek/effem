@@ -8,7 +8,6 @@
 import SwiftUI
 import PodcastIndexKit
 
-@MainActor
 fileprivate struct SetupPodcastIndexKit: ViewModifier {
     func body(content: Content) -> some View {
         content

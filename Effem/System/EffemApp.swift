@@ -9,7 +9,6 @@ import SwiftUI
 import PodcastIndexKit
 
 @main
-@MainActor
 struct EffemApp: App {
     @State private var podcastIndex = PodcastIndexKit()
     @State private var state = AppState()

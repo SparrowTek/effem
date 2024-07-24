@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct PlaybackBar: ViewModifier {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     
@@ -23,7 +22,6 @@ struct PlaybackBar: ViewModifier {
     }
 }
 
-@MainActor
 fileprivate struct PlaybackBarView: View {
     @Environment(AppState.self) private var state
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager

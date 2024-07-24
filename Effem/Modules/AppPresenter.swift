@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
-@MainActor
 struct AppPresenter: View {
     @Environment(AppState.self) private var state
     @Environment(\.modelContext) private var context

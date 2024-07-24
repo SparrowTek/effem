@@ -8,7 +8,6 @@
 import SwiftUI
 import PodcastIndexKit
 
-@MainActor
 struct IndexPresenter: View {
     @Environment(IndexState.self) private var state: IndexState
     
@@ -32,7 +31,6 @@ struct IndexPresenter: View {
     }
 }
 
-@MainActor
 struct IndexView: View {
     private let columns = [
         GridItem(.flexible(), spacing: 8),
@@ -151,7 +149,6 @@ struct IndexView: View {
     }
 }
 
-@MainActor
 fileprivate struct SearchListCell: View {
     @Environment(IndexState.self) private var state: IndexState
     let podcast: Podcast

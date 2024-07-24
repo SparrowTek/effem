@@ -1,5 +1,5 @@
 //
-//  IndexState.swift
+//  SearchState.swift
 //  Effem
 //
 //  Created by Thomas Rademaker on 5/19/23.
@@ -10,7 +10,7 @@ import SwiftData
 import PodcastIndexKit
 
 @Observable
-class IndexState {
+class SearchState {
     enum Sheet: Int, Identifiable {
         case podcastIndexInfo
         

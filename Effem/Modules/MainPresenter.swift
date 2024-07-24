@@ -31,8 +31,8 @@ struct MainPresenter: View {
                         Text("DOWNLOADS")
                             .presentationDragIndicator(.visible)
                     case .search:
-                        IndexPresenter()
-                            .environment(state.indexState)
+                        SearchPresenter()
+                            .environment(state.searchState)
                             .setTheme()
                     }
                 }

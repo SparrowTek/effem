@@ -23,8 +23,8 @@ struct MainTabBar: View {
                     .tag(AppState.Tab.library)
                     .tabItem { Label("library", systemImage: "square.stack.fill")}
                 
-                IndexPresenter()
-                    .environment(state.indexState)
+                SearchPresenter()
+                    .environment(state.searchState)
                     .tag(AppState.Tab.index)
                     .tabItem { Label("index", systemImage: "magnifyingglass")}
                 

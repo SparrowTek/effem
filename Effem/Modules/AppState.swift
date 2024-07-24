@@ -33,7 +33,7 @@ public class AppState {
     public init() {}
     
     @ObservationIgnored
-    lazy var indexState = IndexState(parentState: self)
+    lazy var searchState = SearchState(parentState: self)
     @ObservationIgnored
     lazy var settingsState = SettingsState(parentState: self)
     

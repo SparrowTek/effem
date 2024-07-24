@@ -1,5 +1,5 @@
 //
-//  IndexView.swift
+//  SearchPresenter.swift
 //  Effem
 //
 //  Created by Thomas Rademaker on 5/19/23.
@@ -8,14 +8,14 @@
 import SwiftUI
 import PodcastIndexKit
 
-struct IndexPresenter: View {
-    @Environment(IndexState.self) private var state: IndexState
+struct SearchPresenter: View {
+    @Environment(SearchState.self) private var state: SearchState
     
     var body: some View {
         @Bindable var state = state
         
         NavigationStack(path: $state.path) {
-            IndexView()
+            SearchView()
                 .navigationDestination(for: Podcast.self) {
                     UnsubscribedPodcastView(podcast: $0)
                 }
@@ -31,7 +31,7 @@ struct IndexPresenter: View {
     }
 }
 
-struct IndexView: View {
+struct SearchView: View {
     private let columns = [
         GridItem(.flexible(), spacing: 8),
         GridItem(.flexible(), spacing: 8),
@@ -56,7 +56,7 @@ struct IndexView: View {
     }
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(IndexState.self) private var state: IndexState
+    @Environment(SearchState.self) private var state: SearchState
     @State private var query = ""
     @State private var scope: Int = Scope.all.rawValue
     @State private var performSearchTrigger = PlainTaskTrigger()
@@ -150,7 +150,7 @@ struct IndexView: View {
 }
 
 fileprivate struct SearchListCell: View {
-    @Environment(IndexState.self) private var state: IndexState
+    @Environment(SearchState.self) private var state: SearchState
     let podcast: Podcast
     
     var body: some View {
@@ -175,9 +175,9 @@ fileprivate struct SearchListCell: View {
 
 #Preview {
     NavigationStack {
-        IndexPresenter()
+        SearchPresenter()
             .setupPodcastIndexKit()
-            .environment(IndexState(parentState: .init()))
+            .environment(SearchState(parentState: .init()))
             .environment(MediaPlaybackManager.shared)
             .environment(AppState())
             .environment(PodcastIndexKit())

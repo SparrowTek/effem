@@ -5,7 +5,7 @@
 //  Created by Thomas Rademaker on 5/19/23.
 //
 
-@preconcurrency import Foundation
+import Foundation
 import PodcastIndexKit
 import SwiftData
 import AVKit
@@ -231,9 +231,9 @@ class MediaPlaybackManager {
                 await MainActor.run { [weak self] in
                     guard let self else { return }
                     let progress = self.calculateProgress(currentTime: time.seconds)
-                    currentProgressPublisher.send(progress)
-                    currentTimePublisher.send(time.seconds)
-                    timeDidUpdate(time)
+                    self.currentProgressPublisher.send(progress)
+                    self.currentTimePublisher.send(time.seconds)
+                    self.timeDidUpdate(time)
                 }
             }
         }
@@ -337,14 +337,12 @@ extension MediaPlaybackManager {
             return .success
         }
         
-        center.skipForwardCommand.addTarget { [weak self] _ in
-            guard let self else { return .noActionableNowPlayingItem }
-            return .success
+        center.skipForwardCommand.addTarget { _ in
+                .success
         }
         
-        center.skipBackwardCommand.addTarget { [weak self] _ in
-            guard let self else { return .noActionableNowPlayingItem }
-            return .success
+        center.skipBackwardCommand.addTarget { _ in
+                .success
         }
     }
     

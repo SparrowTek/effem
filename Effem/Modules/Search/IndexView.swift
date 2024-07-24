@@ -103,16 +103,17 @@ struct IndexView: View {
     
     private func performSearch() async {
         guard query.count >= 3, let scope = Scope(rawValue: scope) else { return }
+        let searchQuery = query
         
         switch scope {
         case .all:
             break
         case .title:
-            state.podcasts = (try? await SearchService().search(byTitle: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byTitle: searchQuery).feeds) ?? []
         case .person:
-            state.podcasts = (try? await SearchService().search(byPerson: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byPerson: searchQuery).feeds) ?? []
         case .term:
-            state.podcasts = (try? await SearchService().search(byTerm: query).feeds) ?? []
+            state.podcasts = (try? await SearchService().search(byTerm: searchQuery).feeds) ?? []
         }
     }
     

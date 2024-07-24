@@ -9,8 +9,8 @@ import SwiftData
 
 @Model
 class FMCategory {
-    let id: Int
-    let name: String
+    var id: Int
+    var name: String
     
     init(id: Int, name: String) {
         self.id = id

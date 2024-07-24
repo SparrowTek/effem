@@ -18,8 +18,8 @@ import PodcastIndexKit
     
 @Model
 class FMEpisode {
-    let episode: Episode
-    let podcast: Podcast?
+    var episode: Episode
+    var podcast: Podcast?
     var playPosition: Double
     @Attribute(.externalStorage) var audioFile: Data?
     

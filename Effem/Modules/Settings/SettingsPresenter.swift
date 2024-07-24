@@ -42,7 +42,6 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var icloudSync = false
     @State private var allowDownloading = false
-    @State private var allowStreaming = false
     
     // MARK: color scheme properties
     @State private var selectedColorScheme = 0
@@ -58,7 +57,6 @@ struct SettingsView: View {
             
             Section("cellular network") {
                 Toggle("allow downloading", isOn: $allowDownloading)
-                Toggle("allow streaming", isOn: $allowStreaming)
             }
             
             Section("iCloud sync") {

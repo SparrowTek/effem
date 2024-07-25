@@ -77,7 +77,7 @@ fileprivate struct SearchView: View {
             }
         }
         .navigationTitle("search")
-        .searchable(text: $query, prompt: "shows, episidoes, and more")
+        .searchable(text: $query, prompt: "podcasts, episidoes, and more")
     }
     
     private func displayPodcastIndexInfo() {
@@ -132,7 +132,7 @@ struct SearchView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.bottom)
-        .searchable(text: $query, prompt: "shows, episidoes, and more")
+        .searchable(text: $query, prompt: "podcasts, episidoes, and more")
         .searchScopes($scope, activation: .onSearchPresentation) {
             ForEach(Scope.allCases) {
                 Text($0.text).tag($0.rawValue)
@@ -147,7 +147,7 @@ struct SearchView: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Done", action: { dismiss() })
+                Button("done", action: { dismiss() })
             }
         }
         .navigationTitle("Search")

@@ -95,7 +95,7 @@ struct SettingsView: View {
         .navigationTitle("settings")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Done", action: { dismiss() })
+                Button("done", action: { dismiss() })
             }
         }
         .onAppear(perform: setSelectedColorScheme)

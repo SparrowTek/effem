@@ -43,7 +43,7 @@ struct MainPresenter: View {
 struct LibraryView: View {
     @State private var underlineTabState = UnderlinedTabState(tabs: [
         .init(id: 0, title: "episodes"),
-        .init(id: 1, title: "shows")])
+        .init(id: 1, title: "podcasts")])
     
     var body: some View {
         VStack {

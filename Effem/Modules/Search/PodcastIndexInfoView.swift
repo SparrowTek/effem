@@ -47,12 +47,12 @@ struct PodcastIndexInfoView: View {
 #Preview {
     NavigationStack {
         List {
-            Text("Search View")
+            Text("search view")
                 .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
-        .searchable(text: .constant(""), prompt: "shows, episidoes, and more")
-        .navigationTitle("Search")
+        .searchable(text: .constant(""), prompt: "podcasts, episidoes, and more")
+        .navigationTitle("search")
             .sheet(isPresented: .constant(true)) {
                 PodcastIndexInfoView()
                     .presentationDragIndicator(.visible)

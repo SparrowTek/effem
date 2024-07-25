@@ -28,6 +28,9 @@
     "allow downloading" : {
 
     },
+    "category list unavailable" : {
+
+    },
     "cellular network" : {
 
     },
@@ -73,7 +76,7 @@
     "no podcasts available" : {
 
     },
-    "NOPE" : {
+    "please search for a podcast" : {
 
     },
     "Podcast Index Info" : {
@@ -107,6 +110,9 @@
 
     },
     "shows" : {
+
+    },
+    "shows, episidoes, and more" : {
 
     },
     "storage" : {

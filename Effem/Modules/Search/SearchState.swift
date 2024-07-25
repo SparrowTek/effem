@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
@@ -17,8 +18,13 @@ class SearchState {
         var id: Int { rawValue }
     }
     
+    enum Path: Hashable {
+        case podcast(Podcast)
+        case category(FMCategory)
+    }
+    
     private unowned let parentState: AppState
-    var path: [Podcast] = []
+    var path: [SearchState.Path] = []
     var podcasts: [Podcast] = []
     var sheet: Sheet?
     

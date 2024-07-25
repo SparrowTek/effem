@@ -19,6 +19,9 @@ fileprivate struct SyncAppLoad: ViewModifier {
     private func loadData() async {
         guard let categories = try? await CategoriesService().list(), let feeds = categories.feeds else { return }
         
+        let allCategory = FMCategory(id: 0, name: "All")
+        modelContext.insert(allCategory)
+        
         for category in feeds {
             guard let id = category.id, let name = category.name else { continue }
             let fmCategory = FMCategory(id: id, name: name)

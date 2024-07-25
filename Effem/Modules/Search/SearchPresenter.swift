@@ -17,8 +17,13 @@ struct SearchPresenter: View {
         
         NavigationStack(path: $state.path) {
             SearchView()
-                .navigationDestination(for: Podcast.self) {
-                    UnsubscribedPodcastView(podcast: $0)
+                .navigationDestination(for: SearchState.Path.self) {
+                    switch $0 {
+                    case .podcast(let podcast):
+                        UnsubscribedPodcastView(podcast: podcast)
+                    case .category(let category):
+                        SearchCategoryView(category: category)
+                    }
                 }
                 .sheet(item: $state.sheet) {
                     switch $0 {
@@ -32,22 +37,33 @@ struct SearchPresenter: View {
     }
 }
 
+fileprivate struct SearchCategoryView: View {
+    var category: FMCategory
+    
+    var body: some View {
+        Text(category.name)
+            .commonView()
+    }
+}
+
 fileprivate struct SearchView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SearchState.self) private var state: SearchState
-    @Query private var categories: [FMCategory]
+    @Query(sort: \FMCategory.id) private var categories: [FMCategory]
     @State private var query = ""
     
     var body: some View {
         ZStack {
             if categories.isEmpty {
-                ContentUnavailableView("category list unavailable", systemImage: "list.bullet.clipboard", description: Text("please search for a podcast by name"))
+                ContentUnavailableView("category list unavailable", systemImage: "list.bullet.clipboard", description: Text("please search for a podcast"))
             } else {
-                List {
-                    ForEach(categories) {
-                        Text($0.name)
-                    }
+                List(categories) { category in
+                    Button(category.name, action: { openCategory(category) })
+                        .listRowBackground(Color.primaryBackground)
                 }
+                .listStyle(.plain)
+                .background(Color.primaryBackground)
+                .scrollIndicators(.hidden)
             }
         }
         .commonView()
@@ -66,6 +82,10 @@ fileprivate struct SearchView: View {
     
     private func displayPodcastIndexInfo() {
         state.sheet = .podcastIndexInfo
+    }
+    
+    private func openCategory(_ category: FMCategory) {
+        state.path.append(.category(category))
     }
 }
 

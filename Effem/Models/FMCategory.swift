@@ -9,7 +9,7 @@ import SwiftData
 
 @Model
 class FMCategory {
-    var id: Int
+    @Attribute(.unique) var id: Int
     var name: String
     
     init(id: Int, name: String) {

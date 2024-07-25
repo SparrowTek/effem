@@ -30,6 +30,8 @@ public let previewContainer: ModelContainer = {
             }
         }
         
+        container.mainContext.insert(FMCategory(id: 0, name: "All"))
+        
         if let categories: CategoriesResponse = object(resourceName: "categories"),
            let feeds = categories.feeds {
             for category in feeds {

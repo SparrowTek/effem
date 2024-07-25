@@ -34,6 +34,7 @@ struct PodcastIndexInfoView: View {
                     .opacity(stats == nil ? 1 : 0)
             }
         }
+        .commonView()
         .task { await getStats() }
     }
     

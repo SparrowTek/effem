@@ -18,8 +18,8 @@ struct UnsubscribedPodcastView: View {
     let podcast: Podcast
     
     private var isSubscribed: Bool {
-        let guid = podcast.podcastGuid
-        guard let podcastsMatchingFilter = try? podcasts.filter(#Predicate { $0.podcastGuid == guid }) else { return false }
+        let id = podcast.id
+        guard let podcastsMatchingFilter = try? podcasts.filter(#Predicate { $0.id == id }) else { return false }
         return podcastsMatchingFilter.count > 0
     }
     
@@ -63,7 +63,7 @@ struct UnsubscribedPodcastView: View {
             
             Divider()
             
-            EpisodesScrollView(podcastGUID: podcast.podcastGuid)
+            EpisodesScrollView(podcastFeedID: podcast.id)
         }
         .navigationTitle("new podcast")
         .navigationBarTitleDisplayMode(.inline)
@@ -96,7 +96,7 @@ struct UnsubscribedPodcastView: View {
 }
 
 fileprivate struct EpisodesScrollView: View {
-    var podcastGUID: String?
+    var podcastFeedID: Int?
     @State private var episodes: [Episode] = []
     
     var body: some View {
@@ -115,7 +115,7 @@ fileprivate struct EpisodesScrollView: View {
     }
     
     private func getEpisodes() async {
-        guard let episodes = try? await EpisodesService().episodes(byPodcastGUID: podcastGUID ?? "").items else { return }
+        guard let episodes = try? await EpisodesService().episodes(byFeedID: "\(podcastFeedID ?? 0)").items else { return }
         self.episodes = episodes
     }
 }

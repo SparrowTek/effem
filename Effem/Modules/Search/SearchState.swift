@@ -25,7 +25,6 @@ class SearchState {
     
     private unowned let parentState: AppState
     var path: [SearchState.Path] = []
-    var podcasts: [Podcast] = []
     var sheet: Sheet?
     
     init(parentState: AppState) {

@@ -40,11 +40,12 @@ struct SearchCategoryView: View {
     @State private var query = ""
     @State private var scope: Int = Scope.all.rawValue
     @State private var performSearchTrigger = PlainTaskTrigger()
+    @State private var podcasts: [Podcast] = []
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(state.podcasts) {
+                ForEach(podcasts) {
                     SearchListCell(podcast: $0)
                 }
             }
@@ -87,11 +88,11 @@ struct SearchCategoryView: View {
         case .all:
             break
         case .title:
-            state.podcasts = (try? await SearchService().search(byTitle: searchQuery).feeds) ?? []
+            podcasts = (try? await SearchService().search(byTitle: searchQuery).feeds) ?? []
         case .person:
-            state.podcasts = (try? await SearchService().search(byPerson: searchQuery).feeds) ?? []
+            podcasts = (try? await SearchService().search(byPerson: searchQuery).feeds) ?? []
         case .term:
-            state.podcasts = (try? await SearchService().search(byTerm: searchQuery).feeds) ?? []
+            podcasts = (try? await SearchService().search(byTerm: searchQuery).feeds) ?? []
         }
     }
     
@@ -100,10 +101,11 @@ struct SearchCategoryView: View {
     }
     
     private func getPodcastsForCategory() async {
-        guard state.podcasts.isEmpty else { return }
-        guard let podcastArrayResponse = try? await PodcastsService().trendingPodcasts(cat: category.name),
+        guard podcasts.isEmpty else { return }
+        let categoryName = category.id == 0 ? nil : category.name
+        guard let podcastArrayResponse = try? await PodcastsService().trendingPodcasts(cat: categoryName),
               let podcasts = podcastArrayResponse.feeds else { return }
-        state.podcasts = podcasts
+        self.podcasts = podcasts
     }
 }
 

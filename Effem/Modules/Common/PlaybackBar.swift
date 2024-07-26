@@ -82,6 +82,6 @@ extension View {
 #Preview {
     Color.red
     .playbackBar()
-    .environment(MediaPlaybackManager.shared)
+    .environment(MediaPlaybackManager())
     .environment(AppState())
 }

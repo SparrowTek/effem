@@ -118,6 +118,6 @@ fileprivate struct AudioProgressView: View {
     Text("test")
         .sheet(isPresented: .constant(true)) {
             NowPlayingView()
-                .environment(MediaPlaybackManager.shared)
+                .environment(MediaPlaybackManager())
         }
 }

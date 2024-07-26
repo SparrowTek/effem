@@ -28,8 +28,6 @@ public class AppState {
     var route: Route = .main
     var sheet: Sheet? = nil
     
-    var downloadInProgress = true
-    
     public init() {}
     
     @ObservationIgnored

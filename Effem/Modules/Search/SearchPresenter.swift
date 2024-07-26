@@ -239,7 +239,7 @@ fileprivate struct SearchListCell: View {
         SearchPresenter()
             .setupPodcastIndexKit()
             .environment(SearchState(parentState: .init()))
-            .environment(MediaPlaybackManager.shared)
+            .environment(MediaPlaybackManager())
             .environment(AppState())
             .environment(PodcastIndexKit())
             #if DEBUG

@@ -10,6 +10,7 @@ import SwiftUI
 #warning("this modifier should probably be deprecated")
 fileprivate struct NavBar: ViewModifier {
     @Environment(AppState.self) private var state
+    @Environment(DownloadManager.self) private var downloadManager
     
     func body(content: Content) -> some View {
         GeometryReader { geometry in
@@ -33,7 +34,7 @@ fileprivate struct NavBar: ViewModifier {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
-                        if state.downloadInProgress {
+                        if downloadManager.hasDownloadsInProgress {
                             Button(action: openDownloads) {
                                 Image(systemName: "icloud.and.arrow.down")
                             }
@@ -75,5 +76,6 @@ extension View {
             .navBar()
     }
     .environment(AppState())
-    .environment(MediaPlaybackManager.shared)
+    .environment(MediaPlaybackManager())
+    .environment(DownloadManager())
 }

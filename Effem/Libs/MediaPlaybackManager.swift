@@ -20,8 +20,6 @@ class MediaPlaybackManager {
         case downlaod
     }
     
-    static let shared = MediaPlaybackManager()
-    
     var episode: Episode? = nil
     var podcast: Podcast? = nil
     var isPlaying = false
@@ -40,7 +38,7 @@ class MediaPlaybackManager {
     var currentTime: String = "00:00"
     var timeRemaining: String = "00:00"
     
-    private init() {
+    init() {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers, .duckOthers, .allowAirPlay, .allowBluetooth, .allowBluetoothA2DP])
         setupRemoteControlHandlers()
         

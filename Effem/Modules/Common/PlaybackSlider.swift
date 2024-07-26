@@ -76,6 +76,6 @@ struct PlaybackSlider: View {
     ZStack {
         Color.black
         PlaybackSlider()
-            .environment(MediaPlaybackManager.shared)
+            .environment(MediaPlaybackManager())
     }
 }

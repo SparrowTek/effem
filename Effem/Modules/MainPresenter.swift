@@ -210,7 +210,7 @@ fileprivate struct LibraryEpisodeCell: View {
     MainPresenter()
         .setupPodcastIndexKit()
         .environment(AppState())
-        .environment(MediaPlaybackManager.shared)
+        .environment(MediaPlaybackManager())
         #if DEBUG
         .modelContainer(previewContainer)
         #endif

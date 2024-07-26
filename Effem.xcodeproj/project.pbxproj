@@ -22,6 +22,7 @@
 		6C3116692AD74D670066FED9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6C3116682AD74D670066FED9 /* Localizable.xcstrings */; };
 		6C31166B2AD872FD0066FED9 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C31166A2AD872FD0066FED9 /* CommonView.swift */; };
 		6C3CFAA32C533F6500DC7915 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3CFAA22C533F5F00DC7915 /* DownloadManager.swift */; };
+		6C3CFAA52C53449A00DC7915 /* SearchCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3CFAA42C53449A00DC7915 /* SearchCategoryView.swift */; };
 		6C56B56B2C3AE37500E9565F /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C56B56A2C3AE37500E9565F /* PodcastIndexKit */; };
 		6C56B56E2C3AE3C600E9565F /* PodcastIndexKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C56B56D2C3AE3C600E9565F /* PodcastIndexKit */; };
 		6C56CDA52C4C552D006D0A3E /* AppLoadSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C56CDA42C4C552D006D0A3E /* AppLoadSync.swift */; };
@@ -80,6 +81,7 @@
 		6C31166A2AD872FD0066FED9 /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		6C3545302B05171B00250AB3 /* Effem.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Effem.xcconfig; sourceTree = "<group>"; };
 		6C3CFAA22C533F5F00DC7915 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		6C3CFAA42C53449A00DC7915 /* SearchCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryView.swift; sourceTree = "<group>"; };
 		6C56CDA42C4C552D006D0A3E /* AppLoadSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadSync.swift; sourceTree = "<group>"; };
 		6C56CDA62C4C57B4006D0A3E /* FMCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCategory.swift; sourceTree = "<group>"; };
 		6C70155D2B03A68D003D6160 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				6C726B2E2A180C9000C76C48 /* SearchState.swift */,
 				6CB84B432B0002FD00E17E78 /* PodcastIndexInfoView.swift */,
 				6CB84B452B0011DC00E17E78 /* UnsubscribedPodcastView.swift */,
+				6C3CFAA42C53449A00DC7915 /* SearchCategoryView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				6C0AD7232AF34FB60020350C /* FMModelOptions.swift in Sources */,
 				6CE2A39B2AF2E062003C82C3 /* PlaybackSlider.swift in Sources */,
 				6C8EF8DD2B1174FB00F2C6A7 /* Theme.swift in Sources */,
+				6C3CFAA52C53449A00DC7915 /* SearchCategoryView.swift in Sources */,
 				6C0AD7252AF34FCE0020350C /* FMModel.swift in Sources */,
 				6C726B232A18029200C76C48 /* MediaPlaybackManager.swift in Sources */,
 				6C15D24C2A095221001CBAAD /* EffemApp.swift in Sources */,

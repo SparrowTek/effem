@@ -25,6 +25,9 @@
     "add episodes from you podcast list" : {
 
     },
+    "all" : {
+
+    },
     "allow downloading" : {
 
     },
@@ -71,6 +74,9 @@
 
     },
     "no podcasts available" : {
+
+    },
+    "person" : {
 
     },
     "please search for a podcast" : {
@@ -122,6 +128,12 @@
 
     },
     "system" : {
+
+    },
+    "term" : {
+
+    },
+    "title" : {
 
     },
     "TODO: GET AUTHOR" : {

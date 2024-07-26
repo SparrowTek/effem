@@ -37,15 +37,6 @@ struct SearchPresenter: View {
     }
 }
 
-fileprivate struct SearchCategoryView: View {
-    var category: FMCategory
-    
-    var body: some View {
-        Text(category.name)
-            .commonView()
-    }
-}
-
 fileprivate struct SearchView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(SearchState.self) private var state: SearchState

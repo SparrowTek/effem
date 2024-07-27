@@ -126,17 +126,22 @@ fileprivate struct EpisodeCell: View {
     var episode: Episode
     
     var body: some View {
-        HStack(spacing: 0) {
-            Text(episode.title ?? "")
-            Spacer()
+        VStack {
+            HStack(spacing: 0) {
+                Text(episode.title ?? "")
+                Spacer()
+                
+                Button("", systemImage: "play.circle", action: play)
+                    .imageScale(.large)
+                Button("", systemImage: "arrow.down.circle", action: triggerDownload)
+                    .imageScale(.large)
+            }
+            .padding(.horizontal)
             
-            Button("", systemImage: "play.circle", action: play)
-                .imageScale(.large)
-            Button("", systemImage: "arrow.down.circle", action: triggerDownload)
-                .imageScale(.large)
+            Divider()
+                .padding(.leading)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal)
         .task($downloadTrigger) { await download() }
     }
     

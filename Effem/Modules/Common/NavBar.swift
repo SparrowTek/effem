@@ -70,6 +70,8 @@ extension View {
 }
 
 #Preview {
+    @Previewable @Environment(\.modelContext) var context
+    
     NavigationStack {
         Text("Test")
             .commonView()
@@ -77,5 +79,5 @@ extension View {
     }
     .environment(AppState())
     .environment(MediaPlaybackManager())
-    .environment(DownloadManager())
+    .environment(DownloadManager(modelContainer: context.container))
 }

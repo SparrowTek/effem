@@ -11,7 +11,6 @@ import PodcastIndexKit
 
 struct AppPresenter: View {
     @Environment(AppState.self) private var state
-    @Environment(\.modelContext) private var context
     
     var body: some View {
         switch state.route {

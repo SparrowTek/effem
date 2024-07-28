@@ -122,6 +122,7 @@ fileprivate struct EpisodesScrollView: View {
 
 fileprivate struct EpisodeCell: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(DownloadManager.self) private var downloadManager
     @State private var downloadTrigger = PlainTaskTrigger()
     var episode: Episode
     
@@ -156,13 +157,7 @@ fileprivate struct EpisodeCell: View {
     
     private func download() async {
         do {
-            guard let guid = episode.guid else { return }
-            guard let episode = try? await EpisodesService().episodes(byGUID: guid).episode else { return }
-            let fmEpisode = FMEpisode(episode: episode)
-            modelContext.insert(fmEpisode)
-            let data = try await DownloadService().downloadEpisode(from: episode.enclosureUrl)
-            fmEpisode.audioFile = data
-            try modelContext.save()
+            try await downloadManager.downloadEpisode(episode)
         } catch {
             // TODO: handle catch
             print("DOWNLOAD ERROR: \(error)")
@@ -172,10 +167,13 @@ fileprivate struct EpisodeCell: View {
 
 #if DEBUG
 #Preview {
+    @Previewable @Environment(\.modelContext) var context
+    
     NavigationStack {
         UnsubscribedPodcastView(podcast: Podcast.preview)
             .setupPodcastIndexKit()
             .modelContainer(previewContainer)
+            .environment(DownloadManager(modelContainer: context.container))
     }
 }
 #endif

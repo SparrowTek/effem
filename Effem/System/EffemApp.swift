@@ -13,7 +13,6 @@ struct EffemApp: App {
     @State private var podcastIndex = PodcastIndexKit()
     @State private var state = AppState()
     @State private var mediaPlaybackManager = MediaPlaybackManager()
-    @State private var downloadManager = DownloadManager()
     
     var body: some Scene {
         WindowGroup {
@@ -21,7 +20,6 @@ struct EffemApp: App {
                 .environment(state)
                 .environment(podcastIndex)
                 .environment(mediaPlaybackManager)
-                .environment(downloadManager)
                 .setupModel()
                 .setTheme()
                 .task { await setupPodcastIndexKit() }

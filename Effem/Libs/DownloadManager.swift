@@ -26,8 +26,8 @@ class DownloadManager {
     func downloadEpisode(_ episode: Episode) async throws {
 //        defer { downloads.rem }
 //        downloads.append(episode)
-        guard let guid = episode.guid else { return }
-        guard let episode = try await EpisodesService().episodes(byGUID: guid).episode else { return }
+        guard let guid = episode.guid, let feedID = episode.feedId else { return }
+        guard let episode = try await EpisodesService().episodes(byGUID: guid, feedid: "\(feedID)").episode else { return }
         let data = try await DownloadService().downloadEpisode(from: episode.enclosureUrl)
         try await DownloadPersistor(modelContainer: modelContainer).saveEpisode(episode, with: data)
     }

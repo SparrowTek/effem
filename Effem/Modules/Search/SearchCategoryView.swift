@@ -35,8 +35,6 @@ struct SearchCategoryView: View {
     }
     
     var category: FMCategory
-    @Environment(\.dismiss) private var dismiss
-    @Environment(SearchState.self) private var state: SearchState
     @State private var query = ""
     @State private var scope: Int = Scope.all.rawValue
     @State private var performSearchTrigger = PlainTaskTrigger()
@@ -62,15 +60,6 @@ struct SearchCategoryView: View {
         .onChange(of: query, triggerPerformSearch)
         .onChange(of: scope, triggerPerformSearch)
         .commonView()
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button("", systemImage: "questionmark.circle", action: displayPodcastIndexInfo)
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("done", action: { dismiss() })
-            }
-        }
         .navigationTitle(category.name)
         .task { await getPodcastsForCategory() }
         .task($performSearchTrigger) { await performSearch() }
@@ -94,10 +83,6 @@ struct SearchCategoryView: View {
         case .term:
             podcasts = (try? await SearchService().search(byTerm: searchQuery).feeds) ?? []
         }
-    }
-    
-    private func displayPodcastIndexInfo() {
-        state.sheet = .podcastIndexInfo
     }
     
     private func getPodcastsForCategory() async {

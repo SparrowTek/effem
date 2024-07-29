@@ -26,7 +26,6 @@ import SwiftData
 
 struct EffemDataContainerViewModifier: ViewModifier {
     let container: ModelContainer
-    let downloadManager: DownloadManager
     
     init(inMemory: Bool) {
         do {
@@ -34,7 +33,6 @@ struct EffemDataContainerViewModifier: ViewModifier {
                                            FMEpisode.self,
                                            FMCategory.self,
                                            configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
-            downloadManager = DownloadManager(modelContainer: container)
         } catch {
             fatalError("Failed to create ModelContainer")
         }
@@ -43,7 +41,6 @@ struct EffemDataContainerViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .modelContainer(container)
-            .environment(downloadManager)
     }
 }
 

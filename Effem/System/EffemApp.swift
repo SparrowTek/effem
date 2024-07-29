@@ -20,17 +20,10 @@ struct EffemApp: App {
                 .environment(state)
                 .environment(podcastIndex)
                 .environment(mediaPlaybackManager)
+                .setupPodcastIndexKit()
                 .setupModel()
+                .setupDownloadManager()
                 .setTheme()
-                .task { await setupPodcastIndexKit() }
         }
-    }
-    
-    private func setupPodcastIndexKit() async {
-        guard let infoDictionary = Bundle.main.infoDictionary,
-              let apiKey = infoDictionary["PodcastIndexAPIKey"] as? String,
-              let apiSecret = infoDictionary["PodcastIndexAPISecret"] as? String,
-              let userAgent = infoDictionary["PodcastIndexUserAgent"] as? String else { fatalError("PodcastIndexKit API key, API secret, and User Agent are not properly set in your User.xcconfig file") }
-        await PodcastIndexKit.setup(apiKey: apiKey, apiSecret: apiSecret, userAgent: userAgent)
     }
 }

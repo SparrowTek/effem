@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 import PodcastIndexKit
 
@@ -40,5 +41,20 @@ actor DownloadPersistor {
         modelContext.insert(fmEpisode)
         fmEpisode.audioFile = data
         try modelContext.save()
+    }
+}
+
+struct DownloadManagerViewModifier: ViewModifier {
+    @Environment(\.modelContext) private var modelContext
+    
+    func body(content: Content) -> some View {
+        content
+            .environment(DownloadManager(modelContainer: modelContext.container))
+    }
+}
+
+extension View {
+    func setupDownloadManager() -> some View {
+        modifier(DownloadManagerViewModifier())
     }
 }

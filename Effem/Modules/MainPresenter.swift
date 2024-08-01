@@ -170,6 +170,7 @@ fileprivate struct LibraryShowCell: View {
 }
 
 fileprivate struct LibraryEpisodeCell: View {
+    @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     var episode: FMEpisode
     
     var imageURL: String? {
@@ -202,7 +203,12 @@ fileprivate struct LibraryEpisodeCell: View {
         }
         .listRowBackground(Color.primaryBackground)
         .listRowSeparator(.hidden, edges: .top)
-        
+        .contentShape(Rectangle())
+        .onTapGesture(perform: playEpisode)
+    }
+    
+    private func playEpisode() {
+        mediaPlaybackManager.setEpisode(episode.episode)
     }
 }
 

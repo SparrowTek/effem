@@ -207,10 +207,13 @@ fileprivate struct LibraryEpisodeCell: View {
 }
 
 #Preview {
+    @Previewable @Environment(\.modelContext) var context
+    
     MainPresenter()
         .setupPodcastIndexKit()
         .environment(AppState())
         .environment(MediaPlaybackManager())
+        .environment(DownloadManager(modelContainer: context.container))
         #if DEBUG
         .modelContainer(previewContainer)
         #endif

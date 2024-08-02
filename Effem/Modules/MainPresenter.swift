@@ -41,6 +41,8 @@ struct MainPresenter: View {
 }
 
 struct LibraryView: View {
+    @Environment(AppState.self) private var state
+    @Environment(DownloadManager.self) private var downloadManager
     @State private var underlineTabState = UnderlinedTabState(tabs: [
         .init(id: 0, title: "episodes"),
         .init(id: 1, title: "podcasts")])
@@ -56,8 +58,41 @@ struct LibraryView: View {
             }
             .environment(underlineTabState)
         }
-        .navBar()
         .commonView()
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: openSettings) {
+                    Image(systemName: "slider.horizontal.3")
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    if downloadManager.hasDownloadsInProgress {
+                        Button(action: openDownloads) {
+                            Image(systemName: "icloud.and.arrow.down")
+                        }
+                    }
+                    
+                    Button(action: openSearch) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                }
+            }
+        }
+        .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
+    }
+    
+    private func openSettings() {
+        state.openSettings()
+    }
+    
+    private func openDownloads() {
+        state.openDownloads()
+    }
+    
+    private func openSearch() {
+        state.openSearch()
     }
 }
 

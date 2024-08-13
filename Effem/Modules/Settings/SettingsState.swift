@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 
 @Observable
+@MainActor
 class SettingsState {
     enum NavigationLink: Hashable {
         case about

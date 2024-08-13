@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 
 @Observable
+@MainActor
 public class AppState {
     enum Route {
         case main

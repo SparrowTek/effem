@@ -11,6 +11,7 @@ import SwiftData
 import PodcastIndexKit
 
 @Observable
+@MainActor
 class SearchState {
     enum Sheet: Int, Identifiable {
         case podcastIndexInfo

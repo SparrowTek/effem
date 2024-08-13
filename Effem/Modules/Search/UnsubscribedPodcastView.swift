@@ -123,7 +123,6 @@ fileprivate struct EpisodesScrollView: View {
 fileprivate struct EpisodeCell: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(DownloadManager.self) private var downloadManager
-    @State private var downloadTrigger = PlainTaskTrigger()
     var episode: Episode
     
     var body: some View {
@@ -134,7 +133,7 @@ fileprivate struct EpisodeCell: View {
                 
                 Button("", systemImage: "play.circle", action: play)
                     .imageScale(.large)
-                Button("", systemImage: "arrow.down.circle", action: triggerDownload)
+                Button("", systemImage: "arrow.down.circle", action: download)
                     .imageScale(.large)
             }
             .padding(.horizontal)
@@ -143,25 +142,14 @@ fileprivate struct EpisodeCell: View {
                 .padding(.leading)
         }
         .frame(maxWidth: .infinity)
-        .task($downloadTrigger) { await download() }
     }
     
     private func play() {
         #warning("play can only work and be displayed as an option if the episode is already downloaded")
-        
     }
     
-    private func triggerDownload() {
-        downloadTrigger.trigger()
-    }
-    
-    private func download() async {
-        do {
-            try await downloadManager.downloadEpisode(episode)
-        } catch {
-            // TODO: handle catch
-            print("DOWNLOAD ERROR: \(error)")
-        }
+    private func download() {
+        downloadManager.downloadEpisode(episode)
     }
 }
 

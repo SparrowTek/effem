@@ -43,16 +43,24 @@ class MediaPlaybackManager {
         setupRemoteControlHandlers()
     }
     
-    deinit {
-        Task {
-            await MainActor.run {
-                pause()
-                player = nil
-                timeObserver = nil
-                subscriptions.removeAll()
-            }
-        }
+    
+    func cleanup() {
+        pause()
+        player = nil
+        timeObserver = nil
+        subscriptions.removeAll()
     }
+    #warning("figure out how to deinit stuff that needs to run on the main thread. Or is calling the cleanup method during scenePhase changes enough")
+//    deinit {
+//        Task {
+//            await MainActor.run {
+//                pause()
+//                player = nil
+//                timeObserver = nil
+//                subscriptions.removeAll()
+//            }
+//        }
+//    }
     
     func setEpisode(_ episode: Episode?) {
         self.episode = episode

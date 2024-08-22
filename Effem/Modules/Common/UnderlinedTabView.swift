@@ -40,6 +40,7 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
                 content
                     .animation(nil, value: state.tabIndex)
                     .animation(nil, value: state.selectedTabIndex)
+                    .toolbarBackground(.hidden, for: .tabBar)
             }
             .tabViewStyle(tabViewStyle)
             .onChange(of: state.tabIndex) { withAnimation { state.selectedTabIndex = state.tabIndex } }

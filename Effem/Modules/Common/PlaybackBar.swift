@@ -11,14 +11,12 @@ struct PlaybackBar: ViewModifier {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     
     func body(content: Content) -> some View {
-        content
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    if mediaPlaybackManager.episode != nil {
-                        PlaybackBarView()
-                    }
-                }
+        ZStack(alignment: .bottom) {
+            content
+            if mediaPlaybackManager.episode != nil {
+                PlaybackBarView()
             }
+        }
     }
 }
 
@@ -52,6 +50,12 @@ fileprivate struct PlaybackBarView: View {
                 Image(systemName: "goforward.30")
             }
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white)
+        )
+        .padding()
         .contentShape(Rectangle())
         .onTapGesture { showNowPlayingSheet() }
     }

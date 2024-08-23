@@ -1,5 +1,5 @@
 //
-//  EffemApp.swift
+//  Effem.swift
 //  Effem
 //
 //  Created by Thomas Rademaker on 5/8/23.
@@ -9,7 +9,7 @@ import SwiftUI
 import PodcastIndexKit
 
 @main
-struct EffemApp: App {
+struct Effem: App {
     @Environment(\.scenePhase) private var scenePhase
     @State private var podcastIndex = PodcastIndexKit()
     @State private var state = AppState()

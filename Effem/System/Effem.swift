@@ -6,12 +6,10 @@
 //
 
 import SwiftUI
-import PodcastIndexKit
 
 @main
 struct Effem: App {
     @Environment(\.scenePhase) private var scenePhase
-    @State private var podcastIndex = PodcastIndexKit()
     @State private var state = AppState()
     @State private var mediaPlaybackManager = MediaPlaybackManager()
     
@@ -19,16 +17,15 @@ struct Effem: App {
         WindowGroup {
             AppPresenter()
                 .environment(state)
-                .environment(podcastIndex)
                 .environment(mediaPlaybackManager)
                 .setupPodcastIndexKit()
-                .setupModel()
                 .setupDownloadManager()
                 .setTheme()
                 .onChange(of: scenePhase) { oldValue, newValue in
                     guard newValue != newValue else { return }
                     handleScenePhaseChange(newValue)
                 }
+                .setupModel()
         }
     }
     

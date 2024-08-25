@@ -26,13 +26,16 @@ import SwiftData
 
 struct EffemDataContainerViewModifier: ViewModifier {
     let container: ModelContainer
+    let schema = Schema([
+        FMPodcast.self,
+        FMEpisode.self,
+        FMCategory.self
+    ])
     
     init(inMemory: Bool) {
         do {
-            container = try ModelContainer(for: FMPodcast.self,
-                                           FMEpisode.self,
-                                           FMCategory.self,
-                                           configurations: ModelConfiguration(isStoredInMemoryOnly: inMemory))
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory)
+            container = try ModelContainer(for: schema, configurations: modelConfiguration)
         } catch {
             fatalError("Failed to create ModelContainer")
         }

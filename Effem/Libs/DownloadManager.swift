@@ -26,8 +26,6 @@ class DownloadManager {
     func downloadEpisode(_ episode: Episode) {
         guard inProgressDownloads[episode] == nil else { return }
         
-        // REMEMBER - Tasks eat errors
-        // Intentionally ignoring errors here. If it fails we'll cache it next time
         let task = Task.detached { [weak self] in
             guard let self, let guid = episode.guid, let feedID = episode.feedId else { return }
             

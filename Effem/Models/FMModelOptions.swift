@@ -8,9 +8,11 @@
 import Foundation
 
 class FMModelOptions {
-    #if DEBUG
-    public static let inMemoryPersistence = true
-    #else
-    public static let inMemoryPersistence = false
-    #endif
+//    #if DEBUG
+//    public static let inMemoryPersistence = true
+//    #else
+//    public static let inMemoryPersistence = false
+//    #endif
+    
+    static let inMemoryPersistence = false
 }

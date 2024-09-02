@@ -21,7 +21,7 @@ class UnderlinedTabState {
 }
 
 struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabViewStyle {
-    @Environment(UnderlinedTabState.self) private var state
+    @Environment(AppState.self) private var state
     let tabViewStyle: Style
     let content: Content
     
@@ -36,28 +36,28 @@ struct UnderlinedTabView<Content, Style>: View where Content: View, Style: TabVi
         VStack {
             UnderlinedTabHStack()
             
-            TabView(selection: $state.tabIndex) {
+            TabView(selection: $state.underlineTabState.tabIndex) {
                 content
-                    .animation(nil, value: state.tabIndex)
-                    .animation(nil, value: state.selectedTabIndex)
+                    .animation(nil, value: state.underlineTabState.tabIndex)
+                    .animation(nil, value: state.underlineTabState.selectedTabIndex)
                     .toolbarBackground(.hidden, for: .tabBar)
             }
             .tabViewStyle(tabViewStyle)
-            .onChange(of: state.tabIndex) { withAnimation { state.selectedTabIndex = state.tabIndex } }
-            .onChange(of: state.selectedTabIndex) { withAnimation { state.tabIndex = state.selectedTabIndex } }
+            .onChange(of: state.underlineTabState.tabIndex) { withAnimation { state.underlineTabState.selectedTabIndex = state.underlineTabState.tabIndex } }
+            .onChange(of: state.underlineTabState.selectedTabIndex) { withAnimation { state.underlineTabState.tabIndex = state.underlineTabState.selectedTabIndex } }
         }
     }
 }
 
 struct UnderlinedTabHStack: View {
-    @Environment(UnderlinedTabState.self) private var state
+    @Environment(AppState.self) private var state
     
     var body: some View {
         @Bindable var state = state
         
         HStack(spacing: 20) {
-            ForEach(state.tabs) { tab in
-                UnderlinedTabButton(tab: tab, selection: $state.selectedTabIndex)
+            ForEach(state.underlineTabState.tabs) { tab in
+                UnderlinedTabButton(tab: tab, selection: $state.underlineTabState.selectedTabIndex)
             }
             
             Spacer()
@@ -65,7 +65,7 @@ struct UnderlinedTabHStack: View {
         .padding(.horizontal)
         .overlayPreferenceValue(UnderlinedTabPreferenceKey.self) { preferences in
             GeometryReader { proxy in
-                if let selected = preferences.first(where: { $0.tab.id == state.selectedTabIndex }) {
+                if let selected = preferences.first(where: { $0.tab.id == state.underlineTabState.selectedTabIndex }) {
                     let frame = proxy[selected.anchor]
                     
                     ThemedRectangle()

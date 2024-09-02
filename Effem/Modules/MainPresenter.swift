@@ -43,20 +43,16 @@ struct MainPresenter: View {
 struct LibraryView: View {
     @Environment(AppState.self) private var state
     @Environment(DownloadManager.self) private var downloadManager
-    @State private var underlineTabState = UnderlinedTabState(tabs: [
-        .init(id: 0, title: "episodes"),
-        .init(id: 1, title: "podcasts")])
     
     var body: some View {
         VStack {
             UnderlinedTabView(tabViewStyle: .automatic) {
-                LibraryEpisodesView(underlineTabState: underlineTabState)
+                LibraryEpisodesView(underlineTabState: state.underlineTabState)
                     .tag(0)
                 
                 LibraryShowsView()
                     .tag(1)
             }
-            .environment(underlineTabState)
         }
         .commonView()
         .toolbar {

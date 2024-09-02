@@ -29,6 +29,11 @@ public class AppState {
     var route: Route = .main
     var sheet: Sheet? = nil
     
+    // TODO: whenever a new playlist is created by the user it gets added here
+    var underlineTabState = UnderlinedTabState(tabs: [
+        .init(id: 0, title: "episodes"),
+        .init(id: 1, title: "podcasts")])
+    
     public init() {}
     
     @ObservationIgnored

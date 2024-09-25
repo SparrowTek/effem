@@ -27,13 +27,13 @@ struct PlaybackSlider: View {
             
             ZStack {
                 Capsule()
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.darkCharcoal)
                     .frame(width: geometry.size.width, height: height)
                 
                 HStack {
 //                    // TODO: corners should be all when the progress is near the end
                     UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: height / 2, bottomLeading: height / 2, bottomTrailing: height / 2, topTrailing: height / 2), style: .circular)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.gold)
                         .frame(width: sliderVal, height: height)
                     
                     Spacer()
@@ -74,7 +74,7 @@ struct PlaybackSlider: View {
 
 #Preview {
     ZStack {
-        Color.black
+        Color.primaryBackground
         PlaybackSlider()
             .environment(MediaPlaybackManager())
     }

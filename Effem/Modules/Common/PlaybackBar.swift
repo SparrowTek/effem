@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PodcastIndexKit
 
 struct PlaybackBar: ViewModifier {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
@@ -50,10 +51,11 @@ fileprivate struct PlaybackBarView: View {
                 Image(systemName: "goforward.30")
             }
         }
+        .foregroundStyle(Color.white)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white)
+                .fill(Color.darkCharcoal)
         )
         .padding()
         .contentShape(Rectangle())
@@ -84,8 +86,14 @@ extension View {
 }
 
 #Preview {
-    Color.red
-    .playbackBar()
-    .environment(MediaPlaybackManager())
-    .environment(AppState())
+    @Previewable var mediaPlayback = MediaPlaybackManager()
+    
+    Color.primaryBackground
+        .ignoresSafeArea()
+        .playbackBar()
+        .environment(mediaPlayback)
+        .environment(AppState())
+        .onAppear {
+            mediaPlayback.episode = Episode.preview
+        }
 }

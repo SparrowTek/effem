@@ -24,12 +24,12 @@ struct PodcastIndexInfoView: View {
             ZStack {
                 Text("\(stats?.feedCountTotal ?? 0)")
                     .font(.largeTitle)
-                    .foregroundStyle(.podcastIndexRed)
+                    .foregroundStyle(.vividRed)
                     .padding(.horizontal)
                     .opacity(stats != nil ? 1 : 0)
                 ProgressView()
                     .progressViewStyle(.circular)
-                    .tint(.podcastIndexRed)
+                    .tint(.vividRed)
                     .padding(.horizontal)
                     .opacity(stats == nil ? 1 : 0)
             }

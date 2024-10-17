@@ -91,7 +91,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .commonView()
+        .fullScreenColorView()
         .navigationTitle("settings")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

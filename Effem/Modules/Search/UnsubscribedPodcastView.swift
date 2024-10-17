@@ -67,7 +67,7 @@ struct UnsubscribedPodcastView: View {
         }
         .navigationTitle("new podcast")
         .navigationBarTitleDisplayMode(.inline)
-        .commonView()
+        .fullScreenColorView()
         .task($subscribeTrigger) { await subscribe() }
     }
     

@@ -125,15 +125,15 @@ struct UnderlinedTabPreferenceKey: PreferenceKey {
         Text("episodes")
             .foregroundStyle(.black)
             .tag(0)
-            .commonView()
+            .fullScreenColorView()
         Text("podcasts")
             .foregroundStyle(.black)
             .tag(1)
-            .commonView()
+            .fullScreenColorView()
     }
     .environment(UnderlinedTabState(tabs: [
         .init(id: 0, title: "Episodes"),
         .init(id: 1, title: "podcasts"),
     ]))
-    .commonView()
+    .fullScreenColorView()
 }

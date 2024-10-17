@@ -59,7 +59,7 @@ struct SearchCategoryView: View {
         }
         .onChange(of: query, triggerPerformSearch)
         .onChange(of: scope, triggerPerformSearch)
-        .commonView()
+        .fullScreenColorView()
         .navigationTitle(category.name)
         .task { await getPodcastsForCategory() }
         .task($performSearchTrigger) { await performSearch() }

@@ -57,7 +57,7 @@ fileprivate struct SearchView: View {
                 .scrollIndicators(.hidden)
             }
         }
-        .commonView()
+        .fullScreenColorView()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("", systemImage: "questionmark.circle", action: displayPodcastIndexInfo)
@@ -131,7 +131,7 @@ struct SearchView: View {
         }
         .onChange(of: query, triggerPerformSearch)
         .onChange(of: scope, triggerPerformSearch)
-        .commonView()
+        .fullScreenColorView()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("", systemImage: "questionmark.circle", action: displayPodcastIndexInfo)

@@ -54,7 +54,7 @@ struct LibraryView: View {
                     .tag(1)
             }
         }
-        .commonView()
+        .fullScreenColorView()
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: openSettings) {
@@ -115,7 +115,7 @@ fileprivate struct LibraryEpisodesView: View {
                 .listStyle(.plain)
             }
         }
-        .commonView()
+        .fullScreenColorView()
     }
     
     private func addEpisodes() {
@@ -159,7 +159,7 @@ fileprivate struct LibraryShowsView: View {
                 .scrollIndicators(.hidden)
             }
         }
-        .commonView()
+        .fullScreenColorView()
     }
     
     private func searchForPodcasts() {

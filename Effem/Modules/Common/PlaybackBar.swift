@@ -85,7 +85,6 @@ extension View {
     }
 }
 
-#if DEBUG
 #Preview {
     @Previewable var mediaPlayback = MediaPlaybackManager()
     
@@ -98,4 +97,3 @@ extension View {
             mediaPlayback.episode = Episode.preview
         }
 }
-#endif

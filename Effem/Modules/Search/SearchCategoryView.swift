@@ -118,6 +118,7 @@ fileprivate struct SearchListCell: View {
     }
 }
 
+#if DEBUG
 #Preview(traits: .sampleCategories) {
     SearchCategoryView(category: FMCategory(id: 2, name: "Books"))
         .setupPodcastIndexKit()
@@ -126,3 +127,4 @@ fileprivate struct SearchListCell: View {
         .environment(AppState())
         .environment(PodcastIndexKit())
 }
+#endif

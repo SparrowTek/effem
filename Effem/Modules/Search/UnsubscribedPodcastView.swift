@@ -153,6 +153,7 @@ fileprivate struct EpisodeCell: View {
     }
 }
 
+#if DEBUG
 #Preview(traits: .samplePodcast) {
     @Previewable @Environment(\.modelContext) var context
     
@@ -162,3 +163,4 @@ fileprivate struct EpisodeCell: View {
             .environment(DownloadManager(modelContainer: context.container))
     }
 }
+#endif

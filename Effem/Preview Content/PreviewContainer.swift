@@ -10,6 +10,7 @@ import SwiftData
 import SwiftUI
 import PodcastIndexKit
 
+#if DEBUG
 struct SampleDataPodcast: PreviewModifier {
     
     static func makeSharedContext() throws -> ModelContainer {
@@ -87,3 +88,5 @@ fileprivate func object<c: Codable>(resourceName: String) -> c? {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     return try? decoder.decode(c.self, from: data)
 }
+
+#endif

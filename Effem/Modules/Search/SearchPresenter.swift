@@ -225,6 +225,7 @@ fileprivate struct SearchListCell: View {
 }
 */
 
+#if DEBUG
 #Preview(traits: .sampleCategories) {
     NavigationStack {
         SearchPresenter()
@@ -235,3 +236,4 @@ fileprivate struct SearchListCell: View {
             .environment(PodcastIndexKit())
     }
 }
+#endif

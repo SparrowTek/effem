@@ -118,14 +118,11 @@ fileprivate struct SearchListCell: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sampleCategories) {
     SearchCategoryView(category: FMCategory(id: 2, name: "Books"))
         .setupPodcastIndexKit()
         .environment(SearchState(parentState: .init()))
         .environment(MediaPlaybackManager())
         .environment(AppState())
         .environment(PodcastIndexKit())
-        #if DEBUG
-        .modelContainer(previewContainer)
-        #endif
 }

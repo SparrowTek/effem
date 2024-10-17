@@ -154,13 +154,12 @@ fileprivate struct EpisodeCell: View {
 }
 
 #if DEBUG
-#Preview {
+#Preview(traits: .samplePodcast) {
     @Previewable @Environment(\.modelContext) var context
     
     NavigationStack {
         UnsubscribedPodcastView(podcast: Podcast.preview)
             .setupPodcastIndexKit()
-            .modelContainer(previewContainer)
             .environment(DownloadManager(modelContainer: context.container))
     }
 }

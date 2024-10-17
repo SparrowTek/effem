@@ -225,7 +225,7 @@ fileprivate struct SearchListCell: View {
 }
 */
 
-#Preview {
+#Preview(traits: .sampleCategories) {
     NavigationStack {
         SearchPresenter()
             .setupPodcastIndexKit()
@@ -233,8 +233,5 @@ fileprivate struct SearchListCell: View {
             .environment(MediaPlaybackManager())
             .environment(AppState())
             .environment(PodcastIndexKit())
-            #if DEBUG
-            .modelContainer(previewContainer)
-            #endif
     }
 }

@@ -251,7 +251,4 @@ fileprivate struct LibraryEpisodeCell: View {
         .environment(AppState())
         .environment(MediaPlaybackManager())
         .environment(DownloadManager(modelContainer: context.container))
-        #if DEBUG
-        .modelContainer(previewContainer)
-        #endif
 }

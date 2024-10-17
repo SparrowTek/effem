@@ -7,21 +7,32 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 import PodcastIndexKit
 
-#if DEBUG
-@MainActor
-public let previewContainer: ModelContainer = {
-    do {
-        let container = try ModelContainer(
-            for: FMPodcast.self, FMEpisode.self,
-            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-        )
+struct SampleDataPodcast: PreviewModifier {
+    
+    static func makeSharedContext() throws -> ModelContainer {
+        let container = try ModelContainer(for: FMPodcast.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         
         if let podcastResponse: PodcastResponse = object(resourceName: "podcastresponse"),
            let podcast = podcastResponse.feed {
             container.mainContext.insert(FMPodcast(podcast: podcast))
         }
+        
+        try container.mainContext.save()
+        return container
+    }
+    
+    func body(content: Content, context: ModelContainer) -> some View {
+        content.modelContainer(context)
+    }
+}
+
+struct SampleDataEpisodes: PreviewModifier {
+    
+    static func makeSharedContext() throws -> ModelContainer {
+        let container = try ModelContainer(for: FMPodcast.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         
         if let episodes: EpisodeArrayResponse = object(resourceName: "episodeArrayResponse"),
            let episodes = episodes.items {
@@ -29,6 +40,20 @@ public let previewContainer: ModelContainer = {
                 container.mainContext.insert(FMEpisode(episode: episode))
             }
         }
+        
+        try container.mainContext.save()
+        return container
+    }
+    
+    func body(content: Content, context: ModelContainer) -> some View {
+        content.modelContainer(context)
+    }
+}
+
+struct SampleDataCategories: PreviewModifier {
+    
+    static func makeSharedContext() throws -> ModelContainer {
+        let container = try ModelContainer(for: FMPodcast.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         
         container.mainContext.insert(FMCategory(id: 0, name: "All"))
         
@@ -41,12 +66,19 @@ public let previewContainer: ModelContainer = {
         }
         
         try container.mainContext.save()
-        
         return container
-    } catch {
-        fatalError("Failed to create container")
     }
-}()
+    
+    func body(content: Content, context: ModelContainer) -> some View {
+        content.modelContainer(context)
+    }
+}
+
+extension PreviewTrait where T == Preview.ViewTraits {
+    @MainActor static var samplePodcast: Self = .modifier(SampleDataPodcast())
+    @MainActor static var sampleEpisodes: Self = .modifier(SampleDataEpisodes())
+    @MainActor static var sampleCategories: Self = .modifier(SampleDataCategories())
+}
 
 fileprivate func object<c: Codable>(resourceName: String) -> c? {
     guard let file = Bundle.main.url(forResource: resourceName, withExtension: "json"),
@@ -55,5 +87,3 @@ fileprivate func object<c: Codable>(resourceName: String) -> c? {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     return try? decoder.decode(c.self, from: data)
 }
-
-#endif

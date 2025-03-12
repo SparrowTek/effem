@@ -8,6 +8,8 @@
 import SwiftUI
 import PodcastIndexKit
 
+#warning("all of this can be deleted once Effem servers are up and running")
+
 fileprivate struct SetupPodcastIndexKit: ViewModifier {
     func body(content: Content) -> some View {
         content

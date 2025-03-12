@@ -25,6 +25,7 @@ struct Effem: App {
                     guard newValue != newValue else { return }
                     handleScenePhaseChange(newValue)
                 }
+                .setupServices()
                 .setupModel()
         }
     }

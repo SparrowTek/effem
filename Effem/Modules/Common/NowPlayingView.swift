@@ -80,6 +80,7 @@ fileprivate struct EpisodeDetailsView: View {
     }
 }
 
+#warning("this line sucks.. can it be fixed? .onPreferenceChange(WidthKey.self)")
 fileprivate struct EpisodeArtworkView: View {
     @Environment(MediaPlaybackManager.self) private var mediaPlaybackManager
     @State private var height: CGFloat?
@@ -90,7 +91,7 @@ fileprivate struct EpisodeArtworkView: View {
             .frame(maxWidth: .infinity)
             .background(GeometryReader { Color.clear.preference(key: WidthKey.self, value: $0.size.width) })
             .padding(.horizontal, 40)
-            .onPreferenceChange(WidthKey.self) { height = $0 }
+            .onPreferenceChange(WidthKey.self) { width in Task { await  MainActor.run { height = width } } }
             .frame(height: height)
             .shadow(radius: 20)
     }

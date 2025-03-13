@@ -62,18 +62,13 @@ struct LibraryView: View {
                 }
             }
             
-            ToolbarItem(placement: .topBarTrailing) {
-                HStack {
-                    if downloadManager.hasDownloadsInProgress {
-                        Button(action: openDownloads) {
-                            Image(systemName: "icloud.and.arrow.down")
-                        }
-                    }
-                    
-                    Button(action: openSearch) {
-                        Image(systemName: "magnifyingglass")
-                    }
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if downloadManager.hasDownloadsInProgress {
+                    Button("", systemImage: "icloud.and.arrow.down", action: openDownloads)
                 }
+                
+                Button("", systemImage: "plus", action: addPlaylist)
+                Button("", systemImage: "magnifyingglass", action: openSearch)
             }
         }
         .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
@@ -89,6 +84,10 @@ struct LibraryView: View {
     
     private func openSearch() {
         state.openSearch()
+    }
+    
+    private func addPlaylist() {
+        
     }
 }
 

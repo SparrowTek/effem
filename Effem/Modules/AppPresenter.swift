@@ -21,6 +21,7 @@ struct AppPresenter: View {
     }
 }
 
+#if DEBUG
 #Preview(traits: .sampleCompositeAll) {
     AppPresenter()
         .setupPodcastIndexKit()
@@ -28,3 +29,4 @@ struct AppPresenter: View {
         .environment(MediaPlaybackManager())
         .setupDownloadManager()
 }
+#endif

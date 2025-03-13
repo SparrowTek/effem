@@ -243,12 +243,12 @@ fileprivate struct LibraryEpisodeCell: View {
     }
 }
 
-#Preview {
-    @Previewable @Environment(\.modelContext) var context
-    
+#if DEBUG
+#Preview(traits: .sampleCompositeAll) {
     MainPresenter()
         .setupPodcastIndexKit()
         .environment(AppState())
         .environment(MediaPlaybackManager())
-        .environment(DownloadManager(modelContainer: context.container))
+        .setupDownloadManager()
 }
+#endif

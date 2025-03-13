@@ -54,8 +54,47 @@ struct SampleDataEpisodes: PreviewModifier {
 struct SampleDataCategories: PreviewModifier {
     
     static func makeSharedContext() throws -> ModelContainer {
-        let container = try ModelContainer(for: FMPodcast.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        let container = try ModelContainer(for: FMCategory.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
         
+        container.mainContext.insert(FMCategory(id: 0, name: "All"))
+        
+        if let categories: CategoriesResponse = object(resourceName: "categories"),
+           let feeds = categories.feeds {
+            for category in feeds {
+                guard let id = category.id, let name = category.name else { continue }
+                container.mainContext.insert(FMCategory(id: id, name: name))
+            }
+        }
+        
+        try container.mainContext.save()
+        return container
+    }
+    
+    func body(content: Content, context: ModelContainer) -> some View {
+        content.modelContainer(context)
+    }
+}
+
+struct SampleCompositePodcastAndEpisodeData: PreviewModifier {
+    static func makeSharedContext() throws -> ModelContainer {
+        let container = try ModelContainer(for: FMPodcast.self, FMEpisode.self, FMCategory.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+        
+        // PODCASTS
+        if let podcastResponse: PodcastResponse = object(resourceName: "podcastresponse"),
+           let podcast = podcastResponse.feed {
+            container.mainContext.insert(FMPodcast(podcast: podcast))
+        }
+        
+        
+        // EPISODES
+        if let episodes: EpisodeArrayResponse = object(resourceName: "episodeArrayResponse"),
+           let episodes = episodes.items {
+            for episode in episodes {
+                container.mainContext.insert(FMEpisode(episode: episode))
+            }
+        }
+        
+        // CATEGORIES
         container.mainContext.insert(FMCategory(id: 0, name: "All"))
         
         if let categories: CategoriesResponse = object(resourceName: "categories"),
@@ -79,6 +118,7 @@ extension PreviewTrait where T == Preview.ViewTraits {
     @MainActor static var samplePodcast: Self = .modifier(SampleDataPodcast())
     @MainActor static var sampleEpisodes: Self = .modifier(SampleDataEpisodes())
     @MainActor static var sampleCategories: Self = .modifier(SampleDataCategories())
+    @MainActor static var sampleCompositeAll: Self = .modifier(SampleCompositePodcastAndEpisodeData())
 }
 
 fileprivate func object<c: Codable>(resourceName: String) -> c? {

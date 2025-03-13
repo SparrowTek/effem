@@ -21,12 +21,10 @@ struct AppPresenter: View {
     }
 }
 
-#Preview {
-    @Previewable @Environment(\.modelContext) var context
-    
+#Preview(traits: .sampleCompositeAll) {
     AppPresenter()
         .setupPodcastIndexKit()
         .environment(AppState())
         .environment(MediaPlaybackManager())
-        .environment(DownloadManager(modelContainer: context.container))
+        .setupDownloadManager()
 }

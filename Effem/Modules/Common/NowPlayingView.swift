@@ -43,7 +43,6 @@ fileprivate struct PlaybackControlsView: View {
             }
             .font(.title)
         }
-        .foregroundStyle(Color.darkCharcoal)
     }
     
     private func playPause() {

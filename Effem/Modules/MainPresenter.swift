@@ -67,7 +67,7 @@ struct LibraryView: View {
                     Button("", systemImage: "icloud.and.arrow.down", action: openDownloads)
                 }
                 
-                Button("", systemImage: "plus", action: addPlaylist)
+//                Button("", systemImage: "plus", action: addPlaylist)
                 Button("", systemImage: "magnifyingglass", action: openSearch)
             }
         }
@@ -87,7 +87,10 @@ struct LibraryView: View {
     }
     
     private func addPlaylist() {
-        
+#warning("add playlist functionality needs to be thought about")
+        // Maybe this is nostr or At Proto related?
+        // Maybe it is just a playlist?
+        // Maybe something else entirely?
     }
 }
 

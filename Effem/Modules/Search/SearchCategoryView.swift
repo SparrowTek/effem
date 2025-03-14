@@ -101,7 +101,7 @@ fileprivate struct SearchListCell: View {
     var body: some View {
         Button(action: openPodcast) {
             VStack {
-                CommonImage(image: .url(url: podcast.artwork, sfSymbol: "photo"))
+                CommonImage(image: .url(url: podcast.artwork, placeholder: .sfSymbol("photo")))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .frame(maxWidth: .infinity)
                     .frame(height: 150)

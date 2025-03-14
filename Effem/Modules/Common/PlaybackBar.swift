@@ -27,7 +27,7 @@ fileprivate struct PlaybackBarView: View {
     
     var body: some View {
         HStack {
-            CommonImage(image: .url(url: mediaPlaybackManager.episode?.image, sfSymbol: nil))
+            CommonImage(image: .url(url: mediaPlaybackManager.episode?.image))
                 .frame(width: 50, height: 50)
                 .cornerRadius(4)
             

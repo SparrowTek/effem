@@ -180,7 +180,7 @@ fileprivate struct LibraryShowCell: View {
     var body: some View {
         VStack {
             ZStack(alignment: .topTrailing) {
-                CommonImage(image: .url(url: imageURL, sfSymbol: "photo"))
+                CommonImage(image: .url(url: imageURL, placeholder: .sfSymbol("photo")))
                     .frame(width: 75, height: 75)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 ThemedCircle()
@@ -213,7 +213,7 @@ fileprivate struct LibraryEpisodeCell: View {
     
     var body: some View {
         HStack {
-            CommonImage(image: .url(url: imageURL, sfSymbol: "photo"))
+            CommonImage(image: .url(url: imageURL, placeholder: .sfSymbol("photo")))
                 .frame(width: 75, height: 75)
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
             

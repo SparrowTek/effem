@@ -86,7 +86,7 @@ fileprivate struct EpisodeArtworkView: View {
     @State private var height: CGFloat?
     
     var body: some View {
-        CommonImage(image: .url(url: mediaPlaybackManager.episode?.image, sfSymbol: nil))
+        CommonImage(image: .url(url: mediaPlaybackManager.episode?.image))
             .cornerRadius(20)
             .frame(maxWidth: .infinity)
             .background(GeometryReader { Color.clear.preference(key: WidthKey.self, value: $0.size.width) })

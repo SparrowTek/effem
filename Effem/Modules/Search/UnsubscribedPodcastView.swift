@@ -26,7 +26,7 @@ struct UnsubscribedPodcastView: View {
     var body: some View {
         VStack {
             HStack(alignment: .bottom) {
-                CommonImage(image: .url(url: podcast.artwork, sfSymbol: "photo"))
+                CommonImage(image: .url(url: podcast.artwork, placeholder: .sfSymbol("photo")))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .scaledToFit()
                     .frame(width: 100)

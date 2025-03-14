@@ -29,7 +29,8 @@ struct ServicesViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .environment(\.services, Services(run: ServicesModelActor(modelContainer: modelContext.container)))
+//            .environment(\.services, Services(run: ServicesModelActor(modelContainer: modelContext.container)))
+            .environment(Services(run: ServicesModelActor(modelContainer: modelContext.container)))
     }
 }
 
@@ -39,16 +40,16 @@ extension View {
     }
 }
 
-@MainActor
-struct ServicesKey: @preconcurrency EnvironmentKey {
-    static let defaultValue: Services = {
-        fatalError("Services not provided in environment. Use .setupServices() on your root view.")
-    }()
-}
-
-extension EnvironmentValues {
-    var services: Services {
-        get { self[ServicesKey.self] }
-        set { self[ServicesKey.self] = newValue }
-    }
-}
+//@MainActor
+//struct ServicesKey: @preconcurrency EnvironmentKey {
+//    static let defaultValue: Services = {
+//        fatalError("Services not provided in environment. Use .setupServices() on your root view.")
+//    }()
+//}
+//
+//extension EnvironmentValues {
+//    var services: Services {
+//        get { self[ServicesKey.self] }
+//        set { self[ServicesKey.self] = newValue }
+//    }
+//}
